@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="../styles/style.css">
 
     <!-- Ícone -->
-    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <<<<<<< HEAD <link rel="shortcut icon" href="../assets/favicon.ico">
+        =======
+        <link rel="shortcut icon" href="assets/favicon.ico">
+        >>>>>>> 58ec7a57e5f9fb8e09443359029feb9145bf4997
 </head>
 
 <body>
@@ -24,8 +27,12 @@
 
             <!-- Logo -->
             <div class="logo">
-                <img src="../assets/imgs/1.logo.png" alt="Logo BookHub">
-                BookHub
+                <<<<<<< HEAD <img src="../assets/imgs/1.logo.png" alt="Logo BookHub">
+                    BookHub
+                    =======
+                    <a href="../index.html"> <img src="../assets/imgs/1.logo.png" alt="Logo BookHub"> BookHub</a>
+
+                    >>>>>>> 58ec7a57e5f9fb8e09443359029feb9145bf4997
             </div>
 
             <!-- Busca -->
@@ -36,27 +43,32 @@
             <!-- Navegação -->
             <nav class="nav">
                 <a href="../index.html">Início</a>
-                <a href="categories.html">Categorias</a>
-                <a href="about.html">Sobre</a>
-                <a href="contact.html">Contato</a>
+                <a href="../pages/categories.html">Categorias</a>
+                <a href="../pages/about.html">Sobre</a>
+                <a href="../pages/contact.html">Contato</a>
             </nav>
 
         </div>
     </header>
 
-    <!-- RESULTADOS DA BUSCA -->
-    <section class="books" id="searchSection" style="display: none;">
-        <div class="container">
-            <h2>Resultados da busca</h2>
-            <div class="books-grid" id="searchResults"></div>
-        </div>
-    </section>
 
     <!-- CONTATO -->
-    <section class="books">
+    <section class="books contact-section">
         <div class="container">
             <h2>Contato</h2>
-            <p>Entre em contato conosco: email@bookhub.com</p>
+            <p>Entre em contato conosco através do formulário abaixo ou pelo email: email@bookhub.com</p>
+            <form action="" method="post">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
         </div>
     </section>
 
@@ -75,4 +87,5 @@
     </script>
 
 </body>
+
 </html>

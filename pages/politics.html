@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Configurações básicas -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título -->
+    <title>Sobre - BookHub</title>
+
+    <!-- Estilo -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- Ícone -->
+    <link rel="shortcut icon" href="assets/favicon.ico">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+
+            <!-- Logo -->
+            <div class="logo">
+
+                <a href="../index.html"> <img src="../assets/imgs/1.logo.png" alt="Logo BookHub"> BookHub</a>
+
+            </div>
+
+            <!-- Busca -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Pesquisar livros...">
+            </div>
+
+            <!-- Navegação -->
+            <nav class="nav">
+                <a href="../index.html">Início</a>
+                <a href="../pages/categories.html">Categorias</a>
+                <a href="../pages/about.html">Sobre</a>
+                <a href="../pages/contact.html">Contato</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- POLÍTICAS -->
+    <section class="books politics-section">
+        <div class="container">
+            <article>
+                <h2>Políticas do BookHub</h2>
+                <details>
+                    <summary>Politicas de Privacidade</summary>
+                    <p>Somos uma plataforma dedicada a leitores...</p>
+                </details>
+
+                <details>
+                    <summary>Termos de Uso</summary>
+                    <p> Ao utilizar nossa plataforma, você concorda com os termos de uso...</p>
+                </details>
+                <details>
+                    <summary>Trabalhe conosco</summary>
+                    <p> Ao utilizar nossa plataforma, você concorda com os termos de uso...</p>
+                </details>
+                <details>
+                    <summary>Blog Literário</summary>
+                    <p> Ao utilizar nossa plataforma, você concorda com os termos de uso...</p>
+                </details>
+            </article>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 BookHub</p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="app.js"></script>
+
+    <script>
+        document.querySelector('a[href="politics.html"]').classList.add('active');
+    </script>
+
+</body>
+
+</html>

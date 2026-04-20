@@ -302,7 +302,11 @@ function filterByCategory(genre) {
     );
 
     if (filtered.length === 0) {
-        container.innerHTML = "<p>Nenhum livro encontrado nestas categorias.</p>";
+        container.innerHTML = `
+        <div class="no-results">
+        <h4>Ops!</h4>
+        <p>Nenhum livro encontrado nestas categorias.
+        </p></div>`;
         return;
     }
 

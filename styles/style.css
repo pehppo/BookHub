@@ -36,6 +36,8 @@ body {
 /* ===================== */
 
 .footer {
+  background: #fff;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
   text-align: center;
   padding: 20px 0;
   color: #777;
@@ -66,11 +68,15 @@ body {
 
 /* Logo */
 .logo {
+  font-weight: 600;
+  font-size: 18px;
+}
+.logo a {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-weight: 600;
-  font-size: 18px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo img {
@@ -157,14 +163,37 @@ body {
 
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  /* Alterado para repeat(auto-fill) para melhor adaptação e centralização */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  justify-content: center; /* Centraliza o grid como um todo */
+  justify-items: center; /* Centraliza o card dentro da célula do grid */
+}
+/* CASO NAO TENHA LIVROS */
+.books-grid.categoryResults:empty {
+  display: none;
+}
+.books-grid.categoryResults:has(.no-results) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.books-grid.categoryResults .no-results {
+  text-align: center;
+  color: #555;
+}
+.books-grid.categoryResults .no-results h4 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.books-grid.categoryResults .no-results p {
+  font-size: 16px;
 }
 
-/* Card */
+/* Card (AJUSTADO) */
 .book-card {
   background: #fff;
-  padding: 15px;
+  padding: 20px; /* Aumentei um pouco o respiro */
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   text-align: center;
@@ -179,18 +208,38 @@ body {
 .book-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 240px; /* Define um limite para o card não esticar demais */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza imagem e botão horizontalmente */
 }
 
 .book-card img {
   width: 100%;
   max-height: 190px;
-  max-width: stretch;
+  max-width: 100%;
   object-fit: contain;
   background-color: #f8f8f8;
   padding: 10px;
   border-radius: 8px;
   transition: 0.25s ease;
   cursor: pointer;
+  margin: 0 auto; /* Força a centralização da imagem */
+}
+
+/* Garante que o botão também fique centralizado e com largura boa */
+.book-card button {
+  width: 80%;
+  margin-top: auto; /* Empurra o botão para a base se os títulos variarem de tamanho */
+  padding: 9px;
+  border: none;
+  border-radius: 6px;
+  background-color: #111;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .book-card:hover img {
@@ -386,6 +435,299 @@ a {
   background: #333;
 }
 
+/* Layout em duas colunas */
+.main-layout {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.content-left {
+  flex: 3; /* Ocupa 75% do espaço */
+}
+
+.sidebar {
+  flex: 1; /* Ocupa 25% do espaço */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo dos Cards da Lateral */
+.sidebar-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.event-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  align-items: center;
+}
+
+.event-date {
+  background: #f0f4ff;
+  color: #2b59c3;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  min-width: 55px;
+  text-align: center;
+}
+
+.newsletter {
+  background-color: #2b59c3;
+  color: white;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.btn-subscribe {
+  width: 100%;
+  padding: 10px;
+  background: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Container das logos */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas iguais */
+  gap: 15px; /* Espaço entre as logos */
+  margin-top: 15px;
+}
+
+/* Quadrado que envolve a logo */
+.partner-box {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  height: 80px; /* Altura fixa para manter o padrão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.partner-box:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* A imagem da logo em si */
+.partner-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Garante que a logo não distorça */
+  filter: grayscale(100%); /* Opcional: deixa as logos cinzas */
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+/* Quando passar o mouse, a logo ganha cor e destaque */
+.partner-box:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.footer-complexo {
+  background-color: #f9f9fb;
+  padding: 60px 0 20px;
+  border-top: 1px solid #eee;
+  color: #444;
+  margin-top: 50px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Coluna da missão é maior */
+  gap: 40px;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #666;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #2b59c3;
+}
+
+.mission p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 20px 0;
+}
+
+.contact-info p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.footer-bottom {
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+/* ----------------------------------- */
+/* SOBRE */
+/* ----------------------------------- */
+.about-section {
+  margin-top: 40px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.about-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  margin-top: 0;
+}
+.about-section p {
+  text-indent: 20px;
+  font-weight: 400;
+  text-align: justify;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* ----------------------------------- */
+/* CONTATO */
+/* ----------------------------------- */
+.contact-section form {
+  margin-top: 40px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact-section form label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.contact-section form input,
+.contact-section form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f5f5f7;
+  outline: none;
+  font-size: 14px;
+}
+
+/* POLITICAS E SUPORTE */
+
+.politics-section > .container article {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.politics-section > .container article h2 {
+  margin-bottom: 20px;
+}
+
+/* Caixa de cada dropdown */
+.politics-section > .container details {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+/* Cabeçalho */
+.politics-section > .container summary {
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none;
+  position: relative;
+}
+
+/* Remove seta padrão */
+.politics-section > .container summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Seta custom */
+.politics-section > .container summary::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s;
+}
+
+/* Girar seta quando abrir */
+.politics-section > .container details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Conteúdo animado */
+.politics-section > .container details p {
+  margin: 0;
+  padding: 0 15px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Quando abre */
+.politics-section > .container details[open] p {
+  padding: 15px;
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===================== */
 /* RESPONSIVIDADE - TABLET */
 /* ===================== */
@@ -442,5 +784,24 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 40px;
+  }
+}
+/* Responsividade para celular */
+@media (max-width: 900px) {
+  .main-layout {
+    flex-direction: column;
+  }
+}
+
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 }
