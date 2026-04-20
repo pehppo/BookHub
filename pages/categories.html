@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Título -->
-    <title>BookHub</title>
+    <title>Categorias - BookHub</title>
 
     <!-- Estilo -->
     <link rel="stylesheet" href="styles/style.css">
@@ -52,27 +52,30 @@
         </div>
     </section>
 
-    <!-- LANÇAMENTOS -->
+    <!-- CATEGORIAS -->
     <section class="books">
         <div class="container">
-            <h2>Novos Lançamentos</h2>
-            <div class="books-grid" id="lancamentos"></div>
+            <h2>Categorias</h2>
+            <div class="categories-grid">
+                <button class="category-btn" onclick="filterByCategory('Ação')">Ação</button>
+                <button class="category-btn" onclick="filterByCategory('Aventura')">Aventura</button>
+                <button class="category-btn" onclick="filterByCategory('Fantasia')">Fantasia</button>
+                <button class="category-btn" onclick="filterByCategory('Romance')">Romance</button>
+                <button class="category-btn" onclick="filterByCategory('Terror')">Terror</button>
+                <button class="category-btn" onclick="filterByCategory('Comédia')">Comédia</button>
+                <button class="category-btn" onclick="filterByCategory('Drama')">Drama</button>
+                <button class="category-btn" onclick="filterByCategory('Mistério')">Mistério</button>
+                <button class="category-btn" onclick="filterByCategory('Sci-Fi')">Sci-Fi</button>
+            </div>
+            <div class="books-grid" id="categoryResults"></div>
         </div>
     </section>
 
-    <!-- POPULARES -->
+    <!-- TODOS OS LIVROS -->
     <section class="books">
         <div class="container">
-            <h2>Mais Populares</h2>
-            <div class="books-grid" id="populares"></div>
-        </div>
-    </section>
-
-    <!-- RECOMENDADOS -->
-    <section class="books">
-        <div class="container">
-            <h2>Recomendados para você</h2>
-            <div class="books-grid" id="recomendados"></div>
+            <h2>Todos os Livros</h2>
+            <div class="books-grid" id="allBooks"></div>
         </div>
     </section>
 
@@ -87,7 +90,8 @@
     <script src="app.js"></script>
 
     <script>
-        document.querySelector('a[href="index.html"]').classList.add('active');
+        document.querySelector('a[href="categories.html"]').classList.add('active');
+        renderAllBooks();
     </script>
 
 </body>

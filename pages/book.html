@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <!-- Configurações básicas -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Título -->
-    <title>BookHub</title>
-
-    <!-- Estilo -->
+    <title>Detalhes do Livro</title>
     <link rel="stylesheet" href="styles/style.css">
-
-    <!-- Ícone -->
-    <link rel="shortcut icon" href="assets/favicon.ico">
 </head>
 
 <body>
@@ -52,27 +43,37 @@
         </div>
     </section>
 
-    <!-- LANÇAMENTOS -->
-    <section class="books">
-        <div class="container">
-            <h2>Novos Lançamentos</h2>
-            <div class="books-grid" id="lancamentos"></div>
-        </div>
-    </section>
+    <!-- DETALHE DO LIVRO -->
+    <section class="book-detail">
+        <div class="container detail-content">
 
-    <!-- POPULARES -->
-    <section class="books">
-        <div class="container">
-            <h2>Mais Populares</h2>
-            <div class="books-grid" id="populares"></div>
-        </div>
-    </section>
+            <!-- Imagem -->
+            <img id="book-img" src="" alt="Livro">
 
-    <!-- RECOMENDADOS -->
-    <section class="books">
-        <div class="container">
-            <h2>Recomendados para você</h2>
-            <div class="books-grid" id="recomendados"></div>
+            <!-- Informações -->
+            <div class="info">
+                <h1 id="book-title"></h1>
+                <p class="author">por <span id="book-author"></span></p>
+
+                <p class="genre" id="book-genre"></p>
+                <p class="rating">⭐ <span id="book-rating"></span></p>
+
+                <p class="meta">
+                    <span id="book-year"></span> •
+                    <span id="book-pages"></span> páginas
+                </p>
+
+                <p class="price">R$ <span id="book-price"></span></p>
+
+                <p class="description" id="book-description"></p>
+
+                <!-- Botões -->
+                <div class="actions">
+                    <button class="btn-back" onclick="goBack()">← Voltar</button>
+                    <button class="btn-buy" onclick="buyBook()">Comprar</button>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -83,11 +84,15 @@
         </div>
     </footer>
 
-    <!-- JS -->
     <script src="app.js"></script>
 
     <script>
-        document.querySelector('a[href="index.html"]').classList.add('active');
+        // Pega o ID da URL
+        const params = new URLSearchParams(window.location.search);
+        const bookId = parseInt(params.get("id"));
+
+        // Carrega o livro correto
+        loadBook(bookId);
     </script>
 
 </body>
