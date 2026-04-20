@@ -1,0 +1,581 @@
+@font-face {
+    font-family: "SF Pro";
+    src: url("../assets/fonts/SFPRODISPLAYREGULAR.OTF");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("../assets/fonts/SFPRODISPLAYMEDIUM.OTF");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "SF Pro";
+    src: url("../assets/fonts/SFPRODISPLAYBOLD.OTF");
+    font-weight: 600;
+}
+
+body {
+    margin: 0;
+    font-family: "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f2f4f8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+}
+
+/* ===================== */
+/* LAYOUT */
+/* ===================== */
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* ===================== */
+/* HEADER */
+/* ===================== */
+
+.header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.logo img {
+    width: 40px;
+}
+
+/* Busca */
+.search-box {
+    flex: 1;
+    max-width: 400px;
+    margin: 0 40px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    background: #f5f5f7;
+    outline: none;
+}
+
+/* Navbar */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    position: relative;
+    transition: 0.2s;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #111;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #111;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.nav a.active {
+    color: #111;
+}
+
+.nav a.active::after {
+    width: 100%;
+}
+
+/* ===================== */
+/* LISTA DE LIVROS */
+/* ===================== */
+
+.books {
+    margin-bottom: 50px;
+}
+
+.books h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.books-grid {
+    display: grid;
+    /* Alterado para repeat(auto-fill) para melhor adaptação e centralização */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 30px;
+    justify-content: center; /* Centraliza o grid como um todo */
+    justify-items: center;  /* Centraliza o card dentro da célula do grid */
+}
+
+/* Card (AJUSTADO) */
+.book-card {
+    background: #fff;
+    padding: 20px; /* Aumentei um pouco o respiro */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+    width: 100%;
+    max-width: 240px; /* Define um limite para o card não esticar demais */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza imagem e botão horizontalmente */
+}
+
+.book-card img {
+    width: 100%;
+    max-width: 160px; /* Garante que a capa tenha um tamanho padrão */
+    height: 220px;    /* Altura fixa para manter o alinhamento visual */
+    object-fit: contain;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.25s ease;
+    margin: 0 auto;   /* Força a centralização da imagem */
+}
+
+/* Garante que o botão também fique centralizado e com largura boa */
+.book-card button {
+    width: 80%;
+    margin-top: auto; /* Empurra o botão para a base se os títulos variarem de tamanho */
+    padding: 9px;
+    border: none;
+    border-radius: 6px;
+    background-color: #111;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.book-card:hover img {
+    transform: scale(1.04);
+}
+
+.book-card h3 {
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+/* Botão */
+.book-card button {
+    margin-top: 8px;
+    padding: 9px;
+    border: none;
+    border-radius: 6px;
+    background-color: #111;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.book-card button:hover {
+    background-color: #333;
+}
+
+/* ===================== */
+/* CATEGORIAS */
+/* ===================== */
+
+.categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    background: #fff;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-btn:hover {
+    border-color: #111;
+    color: #111;
+    background: #f9f9f9;
+}
+
+.category-btn.active {
+    border-color: #111;
+    background: #111;
+    color: #fff;
+}
+
+/* ===================== */
+/* DETALHES DO LIVRO */
+/* ===================== */
+
+.detail-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Imagem */
+.detail-content img {
+    width: 260px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Info */
+.info {
+    max-width: 500px;
+}
+
+.info h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+/* títulos */
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h1 {
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    letter-spacing: -0.3px;
+}
+
+p {
+    letter-spacing: -0.1px;
+}
+
+/* textos normais */
+p,
+span,
+a {
+    font-weight: 400;
+}
+
+/* destaques */
+.price {
+    font-weight: 600;
+}
+
+/* Textos */
+.author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.genre {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.rating {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.meta {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ===================== */
+/* BOTÕES */
+/* ===================== */
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-back {
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    background: #e5e7eb;
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    background: #d1d5db;
+}
+
+.btn-buy {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-buy:hover {
+    background: #333;
+}
+/* Layout em duas colunas */
+.main-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.content-left {
+    flex: 3; /* Ocupa 75% do espaço */
+}
+
+.sidebar {
+    flex: 1; /* Ocupa 25% do espaço */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo dos Cards da Lateral */
+.sidebar-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.event-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    align-items: center;
+}
+
+.event-date {
+    background: #f0f4ff;
+    color: #2b59c3;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 55px;
+    text-align: center;
+}
+
+.newsletter {
+    background-color: #2b59c3;
+    color: white;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-subscribe {
+    width: 100%;
+    padding: 10px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Responsividade para celular */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+    }
+}
+
+
+
+/* Container das logos */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria 2 colunas iguais */
+    gap: 15px; /* Espaço entre as logos */
+    margin-top: 15px;
+}
+
+/* Quadrado que envolve a logo */
+.partner-box {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    height: 80px; /* Altura fixa para manter o padrão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.partner-box:hover {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A imagem da logo em si */
+.partner-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Garante que a logo não distorça */
+    filter: grayscale(100%); /* Opcional: deixa as logos cinzas */
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+/* Quando passar o mouse, a logo ganha cor e destaque */
+.partner-box:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.footer-complexo {
+    background-color: #f9f9fb;
+    padding: 60px 0 20px;
+    border-top: 1px solid #eee;
+    color: #444;
+    margin-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Coluna da missão é maior */
+    gap: 40px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #2b59c3;
+}
+
+.mission p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 20px 0;
+}
+
+.contact-info p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
