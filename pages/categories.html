@@ -12,8 +12,9 @@
     <!-- Estilo -->
     <link rel="stylesheet" href="../styles/style.css">
 
-    <!-- Ícone -->
-    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <!-- Ícone(s) -->
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <script defer src="./assets/loadSvgs.js"></script>
 </head>
 
 <body>
@@ -24,12 +25,7 @@
 
             <!-- Logo -->
             <div class="logo">
-                <<<<<<< HEAD <img src="../assets/imgs/1.logo.png" alt="Logo BookHub">
-                    BookHub
-                    =======
-                    <a href="../index.html"> <img src="../assets/imgs/1.logo.png" alt="Logo BookHub"> BookHub</a>
-
-                    >>>>>>> 58ec7a57e5f9fb8e09443359029feb9145bf4997
+                <a href="../index.html"> <img src="../assets/imgs/1.logo.png" alt="Logo BookHub"> BookHub</a>
             </div>
 
             <!-- Busca -->
@@ -38,11 +34,26 @@
             </div>
 
             <!-- Navegação -->
+
             <nav class="nav">
-                <a href="../index.html">Início</a>
-                <a href="categories.html">Categorias</a>
-                <a href="about.html">Sobre</a>
-                <a href="contact.html">Contato</a>
+                <div class="desktop">
+                    <a href="../index.html">Início</a>
+                    <a href="./categories.html">Categorias</a>
+                    <a href="./about.html">Sobre</a>
+                    <a href="./contact.html">Contato</a>
+                </div>
+                <div class="mobile">
+                    <span id="menu-icon">
+                        <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-menu-3d-fluency-96.png">
+                    </span>
+                    <div class="nav-mobile closed">
+                        <div class="content">
+                            <a href="../index.html">Início</a>
+                            <a href="./categories.html">Categorias</a>
+                            <a href="./about.html">Sobre</a>
+                            <a href="./contact.html">Contato</a>
+                        </div>
+                    </div>
             </nav>
 
         </div>
