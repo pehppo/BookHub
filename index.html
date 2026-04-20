@@ -12,8 +12,9 @@
     <!-- Estilo -->
     <link rel="stylesheet" href="styles/style.css">
 
-    <!-- Ícone -->
+    <!-- Ícone(s) -->
     <link rel="shortcut icon" href="assets/favicon.ico">
+    <script defer src="./assets/loadSvgs.js"></script>
 </head>
 
 <body>
@@ -35,11 +36,27 @@
 
             <!-- Navegação -->
             <nav class="nav">
-                <a href="index.html">Início</a>
-                <a href="pages/categories.html">Categorias</a>
-                <a href="pages/about.html">Sobre</a>
-                <a href="pages/contact.html">Contato</a>
+                <div class="desktop">
+                    <a href="index.html">Início</a>
+                    <a href="pages/categories.html">Categorias</a>
+                    <a href="pages/about.html">Sobre</a>
+                    <a href="pages/contact.html">Contato</a>
+                </div>
+                <div class="mobile">
+                    <span id="menu-icon">
+                        <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-menu-3d-fluency-96.png">
+                    </span>
+                    <div class="nav-mobile closed">
+                        <div class="content">
+                            <a href="index.html">Início</a>
+                            <a href="pages/categories.html">Categorias</a>
+                            <a href="pages/about.html">Sobre</a>
+                            <a href="pages/contact.html">Contato</a>
+                        </div>
+                    </div>
+                </div>
             </nav>
+
 
         </div>
     </header>
@@ -91,4 +108,5 @@
     </script>
 
 </body>
+
 </html>
