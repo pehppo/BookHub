@@ -4,7 +4,7 @@
 
 // Vai para página de detalhes com o ID na URL
 function goToBook(id) {
-    window.location.href = `book.html?id=${id}`;
+    window.location.href = `pages/book.html?id=${id}`;
 }
 
 // Guarda o livro atual (usado no botão comprar)
@@ -56,7 +56,7 @@ const books = {
         title: "Hunter x Hunter - Volume 1",
         author: "Yoshihiro Togashi",
         genre: "Ação, Aventura, Fantasia",
-        image: "assets/imgs/hunter-x-hunter-1.jpg",
+        image: "../assets/imgs/hunter-x-hunter-1.jpg",
         rating: "4.9",
         year: 1998,
         pages: 184,
@@ -69,7 +69,7 @@ const books = {
         title: "One Piece - Volume 1",
         author: "Eiichiro Oda",
         genre: "Aventura, Fantasia",
-        image: "assets/imgs/one-piece-1.jpg",
+        image: "../assets/imgs/one-piece-1.jpg",
         rating: "4.8",
         year: 1997,
         pages: 192,
@@ -82,7 +82,7 @@ const books = {
         title: "Naruto - Volume 1",
         author: "Masashi Kishimoto",
         genre: "Ação",
-        image: "assets/imgs/naruto-1.jpg",
+        image: "../assets/imgs/naruto-1.jpg",
         rating: "4.7",
         year: 1999,
         pages: 192,
@@ -95,7 +95,7 @@ const books = {
         title: "Dragon Ball - Volume 1",
         author: "Akira Toriyama",
         genre: "Ação",
-        image: "assets/imgs/dragon-ball-1.jpg",
+        image: "../assets/imgs/dragon-ball-1.jpg",
         rating: "4.8",
         year: 1985,
         pages: 192,
@@ -108,7 +108,7 @@ const books = {
         title: "Hunter x Hunter - Volume 2",
         author: "Yoshihiro Togashi",
         genre: "Ação",
-        image: "assets/imgs/hunter-x-hunter-2.jpg",
+        image: "../assets/imgs/hunter-x-hunter-2.jpg",
         rating: "4.9",
         year: 1998,
         pages: 184,
@@ -121,7 +121,7 @@ const books = {
         title: "One Piece - Volume 2",
         author: "Eiichiro Oda",
         genre: "Aventura",
-        image: "assets/imgs/one-piece-2.jpg",
+        image: "../assets/imgs/one-piece-2.jpg",
         rating: "4.8",
         year: 1997,
         pages: 192,
@@ -134,7 +134,7 @@ const books = {
         title: "Naruto - Volume 2",
         author: "Masashi Kishimoto",
         genre: "Ação",
-        image: "assets/imgs/naruto-2.jpg",
+        image: "../assets/imgs/naruto-2.jpg",
         rating: "4.7",
         year: 1999,
         pages: 192,
@@ -147,7 +147,7 @@ const books = {
         title: "Dragon Ball - Volume 2",
         author: "Akira Toriyama",
         genre: "Ação",
-        image: "assets/imgs/dragon-ball-2.jpg",
+        image: "../assets/imgs/dragon-ball-2.jpg",
         rating: "4.8",
         year: 1985,
         pages: 192,
