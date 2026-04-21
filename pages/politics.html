@@ -36,17 +36,38 @@
 
             <!-- Navegação -->
             <nav class="nav">
-                <a href="../index.html">Início</a>
-                <a href="../pages/categories.html">Categorias</a>
-                <a href="../pages/about.html">Sobre</a>
-                <a href="../pages/contact.html">Contato</a>
+                <div class="desktop">
+                    <a href="../index.html">Início</a>
+                    <a href="./categories.html">Categorias</a>
+                    <a href="./about.html">Sobre</a>
+                    <a href="./contact.html">Contato</a>
+                </div>
+                <div class="mobile">
+                    <span id="menu-icon">
+                        <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-menu-3d-fluency-96.png">
+                    </span>
+                    <div class="nav-mobile closed">
+                        <div class="content">
+                            <a href="../index.html">Início</a>
+                            <a href="./categories.html">Categorias</a>
+                            <a href="./about.html">Sobre</a>
+                            <a href="./contact.html">Contato</a>
+                        </div>
+                    </div>
             </nav>
 
         </div>
     </header>
 
+
+
     <!-- POLÍTICAS -->
     <section class="books politics-section">
+        <!-- SELECTION -->
+        <aside class="politics-box">
+            <a href="./politics.html">Politicas de privacidade</a>
+            <a href="./support.html">Ajuda & Suporte</a>
+        </aside>
         <div class="container">
             <article>
                 <h2>Políticas do BookHub</h2>
@@ -79,7 +100,7 @@
     </footer>
 
     <!-- JS -->
-    <script src="app.js"></script>
+    <script src="../app.js"></script>
 
     <script>
         document.querySelector('a[href="politics.html"]').classList.add('active');
