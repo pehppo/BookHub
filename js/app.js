@@ -275,14 +275,17 @@ function renderSearchResults(results) {
 /* ===================== */
 
 function renderAllBooks() {
-
     const container = document.getElementById("allBooks");
-
     if (!container) return;
 
-    container.innerHTML = booksArray.map(book => `
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
+
+    const sorted = [...booksArray].sort((a, b) => a.title.localeCompare(b.title));
+
+    container.innerHTML = sorted.map(book => `
         <div class="book-card">
-            <img src="${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
+            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
@@ -328,35 +331,19 @@ function filterByCategory(genre) {
         activeGenres.every(g => book.genre.includes(g))
     );
 
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
+
     if (filtered.length === 0) {
         container.innerHTML = `
-        <div class="no-results">
-        <h4>Ops!</h4>
-        <p>Nenhum livro encontrado nestas categorias.
-        </p></div>`;
+            <div class="no-results">
+                <h4>Ops!</h4>
+                <p>Nenhum livro encontrado nestas categorias.</p>
+            </div>`;
         return;
     }
 
     container.innerHTML = filtered.map(book => `
-        <div class="book-card">
-            <img src="${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
-            <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
-        </div>
-    `).join("");
-}
-
-function renderAllBooks() {
-    const container = document.getElementById("allBooks");
-    if (!container) return;
-
-    const isInPages = window.location.pathname.includes('/pages/');
-    const imagePrefix = isInPages ? '../' : '';
-
-    const sorted = [...booksArray].sort((a, b) => a.title.localeCompare(b.title));
-
-    container.innerHTML = sorted.map(book => `
         <div class="book-card">
             <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
             <h3>${book.title}</h3>
