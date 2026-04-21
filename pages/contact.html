@@ -10,8 +10,9 @@
 
     <link rel="stylesheet" href="../styles/style.css">
     <!-- Ícone(s) -->
-    <link rel="shortcut icon" href="assets/favicon.ico">
-    <script defer src="./assets/loadSvgs.js"></script>
+    <link rel="shortcut icon" href="../assets/favicon.ico">
+    <script defer src=".../js/loadSvgs.js"></script>
+
 </head>
 
 <body>
@@ -62,7 +63,7 @@
         <div class="container">
             <h2>Contato</h2>
             <p>Entre em contato conosco através do formulário abaixo ou pelo email: email@bookhub.com</p>
-            <form action="" method="post">
+            <form id="formContato" class="form-opened">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -70,10 +71,17 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea minlength="1" id="message" name="message" rows="5" required></textarea>
 
                 <button type="submit">Enviar</button>
             </form>
+            <div class="sucess-box box-closed">
+                <h4>
+                    E-mail enviado com sucesso!
+                </h4>
+                <p> Entraremos em contato em breve.</p>
+
+            </div>
         </div>
     </section>
 
@@ -88,8 +96,9 @@
     <script src="../app.js"></script>
 
     <script>
-        document.querySelector('a[href="contact.html"]').classList.add('active');
+        document.querySelector('a[href="./contact.html"]').classList.add('active');
     </script>
+    <script defer src="../js/formHandler.js"></script>
 
 </body>
 
