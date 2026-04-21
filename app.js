@@ -4,7 +4,8 @@
 
 // Vai para página de detalhes com o ID na URL
 function goToBook(id) {
-    window.location.href = `pages/book.html?id=${id}`;
+    const path = window.location.pathname.includes('/pages/') ? './book.html' : 'pages/book.html';
+    window.location.href = `${path}?id=${id}`;
 }
 
 // Guarda o livro atual (usado no botão comprar)
