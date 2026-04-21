@@ -186,9 +186,12 @@ function renderBooks(type, elementId) {
         return false;
     });
 
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
+
     container.innerHTML = filtered.map(book => `
         <div class="book-card">
-            <img src="${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
+            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
@@ -254,7 +257,30 @@ function renderSearchResults(results) {
         return;
     }
 
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
+
     container.innerHTML = results.map(book => `
+        <div class="book-card">
+            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
+            <h3>${book.title}</h3>
+            <p class="genre">${book.genre}</p>
+            <button onclick="goToBook(${book.id})">Ver livro</button>
+        </div>
+    `).join("");
+}
+
+/* ===================== */
+/* RENDERIZAR TODOS OS LIVROS */
+/* ===================== */
+
+function renderAllBooks() {
+
+    const container = document.getElementById("allBooks");
+
+    if (!container) return;
+
+    container.innerHTML = booksArray.map(book => `
         <div class="book-card">
             <img src="${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
             <h3>${book.title}</h3>
@@ -325,11 +351,14 @@ function renderAllBooks() {
     const container = document.getElementById("allBooks");
     if (!container) return;
 
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
+
     const sorted = [...booksArray].sort((a, b) => a.title.localeCompare(b.title));
 
     container.innerHTML = sorted.map(book => `
         <div class="book-card">
-            <img src="${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
+            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
