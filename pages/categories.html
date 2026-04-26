@@ -10,8 +10,8 @@
     <title>Categorias - BookHub</title>
 
     <!-- Estilo -->
+    <link rel="stylesheet" href="../styles/variables.css">
     <link rel="stylesheet" href="../styles/style.css">
-
     <!-- Ícone(s) -->
     <link rel="shortcut icon" href="../assets/favicon.ico">
     <script defer src="../js/loadSvgs.js"></script>
@@ -73,28 +73,28 @@
         <div class="container">
             <h2>Categorias</h2>
             <div class="categories-grid">
-                <button class="category-btn" onclick="filterByCategory('Ação')">Ação</button>
-                <button class="category-btn" onclick="filterByCategory('Artes')">Artes</button>
-                <button class="category-btn" onclick="filterByCategory('Astronomia')">Astronomia</button>
-                <button class="category-btn" onclick="filterByCategory('Aventura')">Aventura</button>
-                <button class="category-btn" onclick="filterByCategory('Biografia')">Biografia</button>
-                <button class="category-btn" onclick="filterByCategory('Comédia')">Comédia</button>
-                <button class="category-btn" onclick="filterByCategory('Culinária')">Culinária</button>
-                <button class="category-btn" onclick="filterByCategory('Drama')">Drama</button>
-                <button class="category-btn" onclick="filterByCategory('Educação')">Educação</button>
-                <button class="category-btn" onclick="filterByCategory('Fantasia')">Fantasia</button>
-                <button class="category-btn" onclick="filterByCategory('Filosofia')">Filosofia</button>
-                <button class="category-btn" onclick="filterByCategory('Gastronomia')">Gastronomia</button>
-                <button class="category-btn" onclick="filterByCategory('História')">História</button>
-                <button class="category-btn" onclick="filterByCategory('Mistério')">Mistério</button>
-                <button class="category-btn" onclick="filterByCategory('Motivacional')">Motivacional</button>
-                <button class="category-btn" onclick="filterByCategory('Poesia')">Poesia</button>
-                <button class="category-btn" onclick="filterByCategory('Policial')">Policial</button>
-                <button class="category-btn" onclick="filterByCategory('Política')">Política</button>
-                <button class="category-btn" onclick="filterByCategory('Religião')">Religião</button>
-                <button class="category-btn" onclick="filterByCategory('Romance')">Romance</button>
-                <button class="category-btn" onclick="filterByCategory('Sci-Fi')">Sci-Fi</button>
-                <button class="category-btn" onclick="filterByCategory('Terror')">Terror</button>
+                <button class="category-btn" onclick="filterByCategory('Ação',event)">Ação</button>
+                <button class="category-btn" onclick="filterByCategory('Artes',event)">Artes</button>
+                <button class="category-btn" onclick="filterByCategory('Astronomia',event)">Astronomia</button>
+                <button class="category-btn" onclick="filterByCategory('Aventura',event)">Aventura</button>
+                <button class="category-btn" onclick="filterByCategory('Biografia',event)">Biografia</button>
+                <button class="category-btn" onclick="filterByCategory('Comédia',event)">Comédia</button>
+                <button class="category-btn" onclick="filterByCategory('Culinária',event)">Culinária</button>
+                <button class="category-btn" onclick="filterByCategory('Drama',event)">Drama</button>
+                <button class="category-btn" onclick="filterByCategory('Educação',event)">Educação</button>
+                <button class="category-btn" onclick="filterByCategory('Fantasia',event)">Fantasia</button>
+                <button class="category-btn" onclick="filterByCategory('Filosofia',event)">Filosofia</button>
+                <button class="category-btn" onclick="filterByCategory('Gastronomia',event)">Gastronomia</button>
+                <button class="category-btn" onclick="filterByCategory('História',event)">História</button>
+                <button class="category-btn" onclick="filterByCategory('Mistério',event)">Mistério</button>
+                <button class="category-btn" onclick="filterByCategory('Motivacional',event)">Motivacional</button>
+                <button class="category-btn" onclick="filterByCategory('Poesia',event)">Poesia</button>
+                <button class="category-btn" onclick="filterByCategory('Policial',event)">Policial</button>
+                <button class="category-btn" onclick="filterByCategory('Política',event)">Política</button>
+                <button class="category-btn" onclick="filterByCategory('Religião',event)">Religião</button>
+                <button class="category-btn" onclick="filterByCategory('Romance',event)">Romance</button>
+                <button class="category-btn" onclick="filterByCategory('Sci-Fi',event)">Sci-Fi</button>
+                <button class="category-btn" onclick="filterByCategory('Terror',event)">Terror</button>
             </div>
             <div class="books-grid categoryResults" id="categoryResults"></div>
         </div>
