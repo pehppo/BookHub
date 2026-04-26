@@ -1,0 +1,144 @@
+/* ===================== */
+/* LISTA DE LIVROS */
+/* ===================== */
+
+.books {
+  margin-bottom: 50px;
+}
+
+.books h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.books-grid {
+  display: grid;
+  /* Alterado para repeat(auto-fill) para melhor adaptação e centralização */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  justify-content: center; /* Centraliza o grid como um todo */
+  justify-items: center; /* Centraliza o card dentro da célula do grid */
+}
+/* CASO NAO TENHA LIVROS */
+.books-grid.categoryResults:empty {
+  display: none;
+}
+.books-grid.categoryResults:has(.no-results) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.books-grid.categoryResults .no-results {
+  text-align: center;
+  color: var(--color-text-2);
+}
+.books-grid.categoryResults .no-results h4 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.books-grid.categoryResults .no-results p {
+  font-size: 16px;
+}
+
+/* Card (AJUSTADO) */
+.book-card {
+  background: var(--color-white);
+  padding: 20px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 230px;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 240px; /* Define um limite para o card não esticar demais */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza imagem e botão horizontalmente */
+}
+
+.book-card img {
+  width: 100%;
+  max-height: 190px;
+  max-width: 100%;
+  object-fit: contain;
+  background-color: var(--color-background-3);
+  border-radius: 8px;
+  transition: 0.25s ease;
+  cursor: pointer;
+  margin: 0 auto; /* Força a centralização da imagem */
+}
+
+/* Garante que o botão também fique centralizado e com largura boa */
+.book-card button {
+  width: 100%;
+  margin-top: auto; /* Empurra o botão para a base se os títulos variarem de tamanho */
+  padding: 9px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-link-1);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.book-card:hover img {
+  transform: scale(1.04);
+}
+
+.book-card h3 {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+/* Botão */
+.book-card button {
+  margin-top: 8px;
+  padding: 9px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-link-1);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.book-card button:hover {
+  background-color: var(--color-button-hover);
+}
+@media screen and (max-width: 1024px) {
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding: 0 15px;
+  }
+  .book-card {
+    width: 100%;
+    max-width: 240px;
+  }
+}

@@ -1,0 +1,25 @@
+/* ----------------------------------- */
+/* SOBRE */
+/* ----------------------------------- */
+.about-section {
+  margin-top: 40px;
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.about-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  margin-top: 0;
+}
+.about-section p {
+  text-indent: 20px;
+  font-weight: 400;
+  text-align: justify;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: var(--color-text-3);
+}
