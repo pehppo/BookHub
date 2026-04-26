@@ -43,7 +43,6 @@
 
 /* Card (AJUSTADO) */
 .book-card {
-  background: var(--color-white);
   padding: 20px;
   width: 100%;
   border-radius: 12px;
@@ -57,7 +56,14 @@
   justify-content: space-between;
   max-width: 230px;
 }
-
+.light-mode .book-card {
+  background: var(--color-white);
+}
+.dark-mode .book-card {
+  border: 1px solid var(--dark-blue);
+  background: var(--dark-background-1);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
 .book-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
@@ -73,13 +79,17 @@
   max-height: 190px;
   max-width: 100%;
   object-fit: contain;
-  background-color: var(--color-background-3);
   border-radius: 8px;
   transition: 0.25s ease;
   cursor: pointer;
   margin: 0 auto; /* Força a centralização da imagem */
 }
-
+.light-mode .book-card img {
+  background-color: var(--color-background-3);
+}
+.dark-mode .book-card img {
+  background-color: var(--dark-background-2);
+}
 /* Garante que o botão também fique centralizado e com largura boa */
 .book-card button {
   width: 100%;
@@ -87,13 +97,18 @@
   padding: 9px;
   border: none;
   border-radius: 6px;
-  background-color: var(--color-link-1);
   color: var(--color-white);
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.2s;
+}
+.light-mode .book-card button {
+  background-color: var(--color-link-1);
+}
+.dark-mode .book-card button {
+  background-color: var(--dark-blue);
 }
 
 .book-card:hover img {

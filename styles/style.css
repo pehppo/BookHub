@@ -30,10 +30,16 @@ body {
     "Segoe UI",
     Roboto,
     sans-serif;
-  background-color: var(--color-background-2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
+}
+.light-mode {
+  background-color: var(--color-background-2);
+}
+.dark-mode {
+  background-color: var(--dark-background-1);
+  color: var(--color-white);
 }
 
 /* ===================== */
@@ -41,14 +47,19 @@ body {
 /* ===================== */
 
 .footer {
-  background: var(--color-white);
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
   text-align: center;
   padding: 20px 0;
-  color: var(--color-text-2);
   font-size: 13px;
 }
-
+.light-mode .footer {
+  background: var(--color-white);
+  color: var(--color-text-2);
+}
+.dark-mode .footer {
+  background: var(--dark-background-1);
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.05);
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -59,11 +70,13 @@ body {
 /* HEADER */
 /* ===================== */
 
-.header {
+.light-mode .header {
   background: var(--color-white);
   border-bottom: 1px solid var(--color-light-gray);
 }
-
+.dark-mode .header {
+  background: var(--dark-background-2);
+}
 .header-content {
   display: flex;
   align-items: center;
@@ -100,11 +113,13 @@ body {
   width: 100%;
   padding: 10px 15px;
   border-radius: 20px;
-  border: 1px solid var(--color-light-gray);
-  background: var(--color-background-1);
+
   outline: none;
 }
-
+.light-mode .search-box input {
+  border: 1px solid var(--color-light-gray);
+  background: var(--color-background-1);
+}
 /* Navbar */
 
 .nav > .mobile {
@@ -118,12 +133,13 @@ body {
 
 .nav > .desktop a {
   text-decoration: none;
-  color: var(--color-text-2);
   font-size: 14px;
   position: relative;
   transition: 0.2s;
 }
-
+.light-mode .nav > .desktop a {
+  color: var(--color-text-2);
+}
 .nav > .desktop > a::after {
   content: "";
   position: absolute;
@@ -131,12 +147,17 @@ body {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background: var(--color-link-1);
+
   transition: 0.3s;
 }
-
-.nav > .desktop > a:hover {
-  color: var(--color-link-1);
+.light-mode .nav > .desktop > a::after {
+  background: var(--color-link-1);
+}
+.dark-mode .nav > .desktop > a::after {
+  background: var(--dark-blue);
+}
+.light-mode.nav > .desktop > a:hover {
+  color: var(--dark-blue);
 }
 
 .nav > .desktop > a:hover::after {
@@ -171,6 +192,21 @@ body {
   }
 }
 
+/* dark mode */
+.dark-mode .nav,
+.dark-mode .nav a,
+.dark-mode .logo {
+  color: var(--color-white) !important;
+}
+.light-mode .search-box input {
+  border: 1px solid var(--color-light-gray);
+  background: var(--color-background-1);
+}
+.dark-mode .search-box input {
+  border: 1px solid var(--color-button-2);
+  background: var(--dark-background-1);
+  color: var(--color-white);
+}
 /* ===================== */
 /* CATEGORIAS */
 /* ===================== */
@@ -186,20 +222,22 @@ body {
   padding: 12px 20px;
   border: 2px solid var(--color-light-gray);
   border-radius: 25px;
-  background: var(--color-white);
-  color: var(--color-text-2);
+
   font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
-
-.category-btn:hover {
+.light-mode .category-btn {
+  background: var(--color-white);
+  color: var(--color-text-2);
+}
+.light-mode .category-btn:hover {
   border-color: var(--color-link-1);
   color: var(--color-link-1);
   background: var(--color-background-2);
 }
 
-.category-btn.active {
+.light-mode .category-btn.active {
   border-color: var(--color-link-1);
   background: var(--color-link-1);
   color: var(--color-white);
@@ -262,11 +300,18 @@ body {
 
 /* Estilo dos Cards da Lateral */
 .sidebar-card {
-  background: var(--color-white);
   border-radius: 10px;
   padding: 20px;
-  border: 1px solid var(--color-button-2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.light-mode .sidebar-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-button-2);
+}
+.dark-mode .sidebar-card {
+  background: var(--dark-background-2);
+  border: 1px solid var(--dark-blue);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
 }
 
 .event-item {
@@ -356,11 +401,18 @@ body {
 }
 
 .footer-complexo {
-  background-color: var(--color-background-3);
   padding: 60px 0 20px;
   border-top: 1px solid var(--color-light-gray);
-  color: var(--color-text-3);
   margin-top: 50px;
+}
+.light-mode .footer-complexo {
+  color: var(--color-text-3);
+  background-color: var(--color-background-3);
+}
+.dark-mode .footer-complexo {
+  background-color: var(--dark-background-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-white) !important;
 }
 
 .footer-grid {
@@ -372,9 +424,13 @@ body {
 .footer-column h3 {
   font-size: 16px;
   margin-bottom: 20px;
+}
+.light-mode .footer-column h3 {
   color: var(--color-link-1);
 }
-
+.dark-mode .footer-column h3 {
+  color: var(--color-white);
+}
 .footer-column ul {
   list-style: none;
   padding: 0;
@@ -386,20 +442,33 @@ body {
 
 .footer-column ul li a {
   text-decoration: none;
-  color: var(--color-text-2);
   font-size: 14px;
   transition: 0.3s;
 }
+.light-mode .footer-column ul li a {
+  color: var(--color-text-2);
+}
 
-.footer-column ul li a:hover {
+.light-mode .footer-column ul li a:hover {
   color: var(--color-blue);
+}
+.dark-mode .footer-column ul li a {
+  color: var(--color-white);
+}
+.dark-mode .footer-column ul li a:hover {
+  color: var(--dark-blue);
 }
 
 .mission p {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--color-text-2);
   margin: 20px 0;
+}
+.light-mode .mission p {
+  color: var(--color-text-2);
+}
+.dark-mode .mission p {
+  color: var(--color-white);
 }
 
 .contact-info p {
