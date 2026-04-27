@@ -349,11 +349,14 @@ body {
   text-align: center;
 }
 
-.newsletter {
+.light-mode .newsletter {
   background-color: var(--color-blue);
   color: var(--color-white);
 }
-
+.dark-mode .newsletter {
+  background-color: var(--dark-background-1);
+  color: var(--color-white);
+}
 .newsletter input {
   width: 100%;
   max-width: 100%;
