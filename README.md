@@ -30,7 +30,9 @@ BookHub/
 │   ├── app.js                       # Lógica principal (banco de dados, funções)
 │   ├── formHandler.js               # Manipulação de formulários de contato
 │   ├── loadSvgs.js                  # Carregamento de SVGs
-│   └── openMenu.js                  # Controle do menu mobile
+│   ├── openMenu.js                  # Controle do menu mobile
+│   ├── fixHeader.js                 # Deixa header fixa ao realizar scroll
+│   └── toggleMode.js                # Adiciona switch de dia e noite nas páginas
 ├── pages/                           # Páginas do site
 │   ├── about.html                   # Página sobre
 │   ├── book.html                    # Detalhes do livro
@@ -40,6 +42,12 @@ BookHub/
 │   └── support.html                 # Suporte e FAQ
 └── styles/                          # Folhas de estilo
     └── style.css                    # Estilos principais (responsivo)
+    ├── variables.css                # variáveis de paleta de cores
+    ├── politicsSuport.css           # Estilos das páginas políticas e suporte
+    ├── contact.css                  # Estilos da página contato
+    ├── bookList.css                 # Estilo da lista de livros e suas categorias
+    ├── book.css                     # Estilos das página de detalhes do livro
+    └── about.css                    # Estilos da página sobre       
 ```
 
 ## 💻 Tecnologias Utilizadas
