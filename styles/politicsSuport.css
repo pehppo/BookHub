@@ -23,7 +23,6 @@
   gap: 20px;
   margin-top: 100px;
   justify-content: center;
-  background-color: var(--color-white);
   width: 100%;
   max-width: 300px;
   max-height: max-content;
@@ -31,34 +30,61 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
 }
+.light-mode .politics-box {
+  background: var(--color-white);
+}
+.dark-mode .politics-box {
+  background: var(--dark-background-1);
+  color: var(--color-white);
+  border: 1px solid var(--dark-blue);
+}
 .politics-box a {
   text-decoration: none;
-  color: var(--color-text-2);
   font-size: 14px;
   padding: 10px 20px;
-  border: 1px solid var(--color-light-gray);
   border-radius: 25px;
   transition: 0.3s;
+}
+.light-mode .politics-box a {
+  color: var(--color-text-2);
+  border: 1px solid var(--color-light-gray);
+}
+.dark-mode .politics-box a {
+  color: var(--color-white);
+  border: 1px solid var(--dark-blue);
 }
 .politics-box a:hover {
   border-color: var(--color-link-1);
   color: var(--color-link-1);
   background: var(--color-background-2);
 }
-.politics-box a.active {
+
+.light-mode .politics-box a.active {
   border-color: var(--color-link-1);
   background: var(--color-link-1);
   color: var(--color-white);
 }
+.dark-mode .politics-box a.active {
+  border-color: var(--dark-blue);
+  background: var(--dark-blue);
+  color: var(--color-white);
+}
+
 /* Caixa de cada dropdown */
 .politics-section > .container details {
-  background: var(--color-white);
   border-radius: 8px;
   margin-bottom: 10px;
   overflow: hidden;
+}
+.light-mode .politics-section > .container details {
+  background: var(--color-white);
   border: 1px solid var(--color-light-gray);
 }
-
+.dark-mode .politics-section > .container details {
+  background: var(--dark-background-1);
+  border: 1px solid var(--dark-blue);
+  color: var(--color-white);
+}
 /* Cabeçalho */
 .politics-section > .container summary {
   padding: 15px;

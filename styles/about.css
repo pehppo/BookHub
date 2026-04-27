@@ -3,10 +3,20 @@
 /* ----------------------------------- */
 .about-section {
   margin-top: 40px;
-  background: var(--color-white);
+  margin-bottom: 40px;
+  max-width: 80%;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-inline: auto;
+}
+.light-mode .about-section {
+  background: var(--color-white);
+}
+.dark-mode .about-section {
+  background: var(--dark-background-1);
+  border: 1px solid var(--dark-blue);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
 }
 .about-section h2 {
   font-size: 2rem;
@@ -21,5 +31,25 @@
   font-size: 14px;
   line-height: 1.6;
   margin-bottom: 16px;
+}
+.light-mode .about-section p {
   color: var(--color-text-3);
+}
+.dark-mode .about-section p {
+  color: var(--color-white);
+}
+@media (max-width: 768px) {
+  .about-section {
+    max-width: 95%;
+    padding: 15px;
+  }
+  .about-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .about-section p {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
 }
