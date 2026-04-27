@@ -3,12 +3,21 @@
 /* ----------------------------------- */
 .contact-section form {
   margin-top: 40px;
-  background: var(--color-white);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   flex-direction: column;
   gap: 15px;
+}
+
+.light-mode .contact-section form {
+  background: var(--color-white);
+}
+.dark-mode .contact-section form {
+  color: var(--color-white);
+  background: var(--dark-background-1);
+  border: 1px solid var(--dark-blue);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
 }
 .contact-section form label {
   font-size: 14px;
@@ -28,11 +37,16 @@
   padding: 10px;
   border: none;
   border-radius: 6px;
-  background: var(--color-link-1);
   color: var(--color-white);
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
+}
+.light-mode .contact-section form button {
+  background: var(--color-link-1);
+}
+.dark-mode .contact-section form button {
+  background: var(--dark-blue);
 }
 .contact-section form button:hover {
   background: var(--color-text-3);
