@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 15px;
 }
+
 .light-mode .contact-section form {
   background: var(--color-white);
 }

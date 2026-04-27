@@ -8,12 +8,18 @@
   justify-content: center;
   gap: 70px;
   margin: 50px auto;
-  background: var(--color-white);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
+.light-mode .detail-content {
+  background: var(--color-white);
+}
+.dark-mode .detail-content {
+  background: var(--dark-background-1);
+  color: var(--color-white);
+  border: 1px solid var(--dark-blue);
+}
 /* Imagem */
 .detail-content img {
   width: 260px;
@@ -65,10 +71,14 @@ a {
 /* Textos */
 .author {
   font-size: 14px;
-  color: var(--color-text-2);
   margin-bottom: 12px;
 }
-
+.light-mode .author {
+  color: var(--color-text-2);
+}
+.dark-mode .author {
+  color: var(--color-white);
+}
 .genre {
   font-size: 15px;
   font-weight: 400;
@@ -83,10 +93,14 @@ a {
 
 .meta {
   font-size: 13px;
-  color: var(--color-text-2);
   margin-bottom: 15px;
 }
-
+.light-mode .meta {
+  color: var(--color-text-2);
+}
+.dark-mode .meta {
+  color: var(--color-white);
+}
 .price,
 .price span {
   font-size: 22px;
