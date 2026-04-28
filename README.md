@@ -41,13 +41,13 @@ BookHub/
 │   ├── politics.html                # Políticas de privacidade
 │   └── support.html                 # Suporte e FAQ
 └── styles/                          # Folhas de estilo
-    └── style.css                    # Estilos principais (responsivo)
-    ├── variables.css                # variáveis de paleta de cores
-    ├── politicsSuport.css           # Estilos das páginas políticas e suporte
-    ├── contact.css                  # Estilos da página contato
-    ├── bookList.css                 # Estilo da lista de livros e suas categorias
-    ├── book.css                     # Estilos das página de detalhes do livro
-    └── about.css                    # Estilos da página sobre       
+│   └── style.css                    # Estilos principais (responsivo)
+│   ├── variables.css                # variáveis de paleta de cores
+│   ├── politicsSuport.css           # Estilos das páginas políticas e suporte
+│   ├── contact.css                  # Estilos da página contato
+│   ├── bookList.css                 # Estilo da lista de livros e suas categorias
+│   ├── book.css                     # Estilos das página de detalhes do livro
+└── └── about.css                    # Estilos da página sobre       
 ```
 
 ## 💻 Tecnologias Utilizadas
