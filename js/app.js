@@ -189,14 +189,37 @@ function renderBooks(type, elementId) {
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
 
-    container.innerHTML = filtered.map(book => `
-        <div class="book-card">
-            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
-            <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
+    container.innerHTML = `
+    <div class="carousel">
+        <div class="slides">
+            ${filtered.map(book => `
+                <div class="book-card">
+                    <img 
+                        src="${imagePrefix}${book.image}" 
+                        onclick="goToBook(${book.id})" 
+                        style="cursor: pointer;"
+                    >
+
+                    <h3>${book.title}</h3>
+
+                    <p class="genre">${book.genre}</p>
+
+                    <button onclick="goToBook(${book.id})">
+                        Ver livro
+                    </button>
+                </div>
+            `).join("")}
         </div>
-    `).join("");
+
+        <button type="button" class="carousel-button prev">
+            &#10094;
+        </button>
+
+        <button type="button" class="carousel-button next">
+            &#10095;
+        </button>
+    </div>
+`;
 }
 
 /* ===================== */
