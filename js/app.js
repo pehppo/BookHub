@@ -1,18 +1,18 @@
 async function loadBooks() {
 
-    const response = await fetch('./assets/api/books.json');
+    const jsonPath = window.location.pathname.includes('/pages/')
+        ? '../assets/api/books.json'
+        : './assets/api/books.json';
+
+    const response = await fetch(jsonPath);
 
     const data = await response.json();
 
-    console.log(data.books);
     return data;
-
 }
-
 async function init() {
-
+    console.log('App script loaded.');
     const data = await loadBooks();
-
     const books = data?.books;
     if (!books) {
         console.error("Nenhum livro encontrado.");
@@ -22,41 +22,16 @@ async function init() {
     /* ===================== */
     /* NAVEGAÇÃO */
     /* ===================== */
-
     // Vai para página de detalhes com o ID na URL
     function goToBook(id) {
         const path = window.location.pathname.includes('/pages/') ? './book.html' : 'pages/book.html';
         window.location.href = `${path}?id=${id}`;
+
     }
 
     // Guarda o livro atual (usado no botão comprar)
     let currentBook = null;
     window.goToBook = goToBook;
-
-    /* ===================== */
-    /* DETALHES DO LIVRO */
-    /* ===================== */
-
-    function loadBook(id) {
-
-        // Busca o livro pelo ID
-        const book = books[id];
-
-        if (!book) return;
-
-        currentBook = book;
-
-        // Preenche os dados na tela
-        document.getElementById("book-img").src = "../" + book.image;
-        document.getElementById("book-title").innerText = book.title;
-        document.getElementById("book-author").innerText = book.author;
-        document.getElementById("book-genre").innerText = book.genre;
-        document.getElementById("book-rating").innerText = book.rating;
-        document.getElementById("book-pages").innerText = book.pages;
-        document.getElementById("book-year").innerText = book.year;
-        document.getElementById("book-price").innerText = book.price;
-        document.getElementById("book-description").innerText = book.description;
-    }
 
     // Voltar
     function goBack() {
@@ -84,7 +59,6 @@ async function init() {
         id: Number(id),
         ...book
     }));
-
     /* ===================== */
     /* RENDERIZAÇÃO */
     /* ===================== */

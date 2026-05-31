@@ -20,6 +20,8 @@
     <script defer src="../js/openMenu.js"></script>
     <script defer src="../js/fixHeader.js"></script>
     <script defer src="../js/toggleMode.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/bookDetails.js"></script>
 </head>
 
 <body>
@@ -115,16 +117,7 @@
     </footer>
     <span id="theme-toggle">
     </span>
-    <script src="../js/app.js"></script>
 
-    <script>
-        // Pega o ID da URL
-        const params = new URLSearchParams(window.location.search);
-        const bookId = parseInt(params.get("id"));
-
-        // Carrega o livro correto
-        loadBook(bookId);
-    </script>
 
 </body>
 
