@@ -1,0 +1,108 @@
+{
+  "books": {
+    "1": {
+      "title": "Hunter x Hunter - Volume 1",
+      "author": "Yoshihiro Togashi",
+      "genre": "Ação, Aventura, Fantasia",
+      "image": "assets/imgs/hunter-x-hunter-1.jpg",
+      "rating": 4.9,
+      "year": 1998,
+      "pages": 184,
+      "price": 26.24,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Gon Freecss é um garoto de 12 anos que vive na Ilha da Baleia."
+    },
+    "2": {
+      "title": "One Piece - Volume 1",
+      "author": "Eiichiro Oda",
+      "genre": "Aventura, Fantasia",
+      "image": "assets/imgs/one-piece-1.jpg",
+      "rating": 4.8,
+      "year": 1997,
+      "pages": 192,
+      "price": 38.42,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Conhecemos o pequeno Luffy na Vila Foosha."
+    },
+    "3": {
+      "title": "Naruto - Volume 1",
+      "author": "Masashi Kishimoto",
+      "genre": "Ação",
+      "image": "assets/imgs/naruto-1.jpg",
+      "rating": 4.7,
+      "year": 1999,
+      "pages": 192,
+      "price": 31.25,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Naruto é o pária da Vila da Folha."
+    },
+    "4": {
+      "title": "Dragon Ball - Volume 1",
+      "author": "Akira Toriyama",
+      "genre": "Ação",
+      "image": "assets/imgs/dragon-ball-1.jpg",
+      "rating": 4.8,
+      "year": 1985,
+      "pages": 192,
+      "price": 139.9,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Goku é um menino com cauda que vive sozinho nas montanhas."
+    },
+    "5": {
+      "title": "Hunter x Hunter - Volume 2",
+      "author": "Yoshihiro Togashi",
+      "genre": "Ação",
+      "image": "assets/imgs/hunter-x-hunter-2.jpg",
+      "rating": 4.9,
+      "year": 1998,
+      "pages": 184,
+      "price": 26.24,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Gon embarca em um navio cheio de aspirantes a Hunter."
+    },
+    "6": {
+      "title": "One Piece - Volume 2",
+      "author": "Eiichiro Oda",
+      "genre": "Aventura",
+      "image": "assets/imgs/one-piece-2.jpg",
+      "rating": 4.8,
+      "year": 1997,
+      "pages": 192,
+      "price": 38.42,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Luffy está à deriva em um barril."
+    },
+    "7": {
+      "title": "Naruto - Volume 2",
+      "author": "Masashi Kishimoto",
+      "genre": "Ação",
+      "image": "assets/imgs/naruto-2.jpg",
+      "rating": 4.7,
+      "year": 1999,
+      "pages": 192,
+      "price": 31.25,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Naruto vai tirar sua foto oficial para o registro ninja."
+    },
+    "8": {
+      "title": "Dragon Ball - Volume 2",
+      "author": "Akira Toriyama",
+      "genre": "Ação",
+      "image": "assets/imgs/dragon-ball-2.jpg",
+      "rating": 4.8,
+      "year": 1985,
+      "pages": 192,
+      "price": 139.9,
+      "link": "https://www.amazon.com.br/",
+      "category": ["lancamentos"],
+      "description": "Enquanto acampam no meio da floresta."
+    }
+  }
+}

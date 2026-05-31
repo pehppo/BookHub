@@ -1,0 +1,16 @@
+.carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slides {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+.book-card {
+  min-width: 250px;
+  flex-shrink: 0;
+}
