@@ -17,7 +17,6 @@ async function initCarousel() {
         return;
     }
 
-    console.log('Initializing carousel...');
     const carousels = document.querySelectorAll('.carousel');
 
     carousels.forEach(carousel => {
@@ -34,9 +33,31 @@ async function initCarousel() {
         function getVisibleItems() {
             const containerWidth = carousel.offsetWidth;
             const itemWidth = books[0].offsetWidth;
-            return Math.floor(containerWidth / itemWidth);
-        }
 
+            return Math.floor(containerWidth / itemWidth);
+
+        }
+        let lastVisible = [];
+
+        function updateVisibleBooks() {
+
+            lastVisible.forEach(book => {
+                book.classList.remove('visible');
+                book.classList.remove('first', 'last');
+            });
+
+            lastVisible = Array.from(books).slice(
+                index,
+                index + getVisibleItems()
+            );
+
+            lastVisible.forEach(book => {
+                book.classList.add('visible');
+                book.classList.remove('first', 'last');
+            });
+            lastVisible[0].classList.add('first');
+            lastVisible[lastVisible.length - 1].classList.add('last');
+        }
         function updateSlider() {
 
             const gap = parseInt(getComputedStyle(slider).gap) || 0;
@@ -44,6 +65,7 @@ async function initCarousel() {
 
             slider.style.transform =
                 `translateX(-${index * itemWidth}px)`;
+            updateVisibleBooks();
         }
 
         function nextSlide() {
@@ -58,6 +80,8 @@ async function initCarousel() {
             }
 
             updateSlider();
+            updateVisibleBooks();
+
         }
 
         function prevSlide() {
@@ -78,9 +102,11 @@ async function initCarousel() {
         btnLeft.addEventListener('click', prevSlide);
 
         window.addEventListener('resize', updateSlider);
-
+        window.addEventListener('resize', () => {
+            updateSlider();
+            updateVisibleBooks();
+        });
         setInterval(nextSlide, 3000);
-
         updateSlider();
     });
 }

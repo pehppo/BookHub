@@ -108,26 +108,27 @@ async function init() {
 
         container.innerHTML = `
     <div class="carousel">
-        <div class="slides">
-            ${filtered.map(book => `
-                <div class="book-card">
-                    <img 
-                        src="${imagePrefix}${book.image}" 
-                        onclick="goToBook(${book.id})" 
-                        style="cursor: pointer;"
-                    >
+        <div class="container">
+            <div class="slides">
+                ${filtered.map(book => `
+                    <div class="book-card">
+                        <img 
+                            src="${imagePrefix}${book.image}" 
+                            onclick="goToBook(${book.id})" 
+                            style="cursor: pointer;"
+                        >
 
-                    <h3>${book.title}</h3>
+                        <h3>${book.title}</h3>
 
-                    <p class="genre">${book.genre}</p>
+                        <p class="genre">${book.genre}</p>
 
-                    <button onclick="goToBook(${book.id})">
-                        Ver livro
-                    </button>
-                </div>
-            `).join("")}
+                        <button onclick="goToBook(${book.id})">
+                            Ver livro
+                        </button>
+                    </div>
+                `).join("")}
+            </div>
         </div>
-
         <button type="button" class="carousel-button prev">
             &#10094;
         </button>
