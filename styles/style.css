@@ -132,11 +132,12 @@ body {
   width: 100%;
   height: auto;
   max-width: 40px;
+  min-height: 58px;
 }
 #searchResultsContainer .books-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 5px;
 }
 #searchResultsContainer .book-card-result {
   display: flex;
@@ -147,7 +148,7 @@ body {
   border-radius: 5px;
   transition: background-color 0.2s;
   width: 100%;
-  border: 1px solid wheat;
+  border: 1px solid var(--dark-blue);
 }
 #searchResultsContainer .book-card-result h3 {
   font-size: 14px;
