@@ -29,7 +29,12 @@ async function renderAllBooks() {
     console.log("Sorted books array:", sorted);
     container.innerHTML = sorted.map(book => `
         <div class="book-card">
-            <img src="${imagePrefix}${book.image || '../assets/images/image-default.png'}" onclick="goToBook(${book.id})" style="cursor: pointer;">
+           <img
+                src="${imagePrefix}${book.image}"
+                onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
+                onclick="goToBook(${book.id})"
+                style="cursor:pointer;"
+            >
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
@@ -91,8 +96,12 @@ async function filterByCategory(event, genre) {
 
     container.innerHTML = filtered.map(book => `
         <div class="book-card">
-            <img src="${imagePrefix}${book.image || '../assets/images/image-default.png'}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
+           <img
+                src="${imagePrefix}${book.image}"
+                onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
+                onclick="goToBook(${book.id})"
+                style="cursor:pointer;"
+            >
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
         </div>

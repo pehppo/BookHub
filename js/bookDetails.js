@@ -36,9 +36,15 @@ async function loadBookDetails() {
     if (!book) return;
 
     currentBook = book;
-
+    const isInPages = window.location.pathname.includes('/pages/');
+    const imagePrefix = isInPages ? '../' : '';
     // Preenche os dados na tela
-    document.getElementById("book-img").src = "../" + book.image;
+    const img = document.getElementById("book-img");
+    console.log("Carregando imagem do livro:", `${imagePrefix}${book.image}`);
+    img.src = `${imagePrefix}${book.image}`;
+    img.onerror = () => {
+        img.src = `${imagePrefix}assets/imgs/image-default.png`;
+    };
     document.getElementById("book-title").innerText = book.title;
     document.getElementById("book-author").innerText = book.author;
     document.getElementById("book-genre").innerText = book.genre;

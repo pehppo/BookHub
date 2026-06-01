@@ -87,9 +87,10 @@ async function init() {
                 ${filtered.map(book => `
                     <div class="book-card">
                         <img 
-                            src="${imagePrefix}${book.image}" 
-                            onclick="goToBook(${book.id})" 
-                            style="cursor: pointer;"
+                            src="${imagePrefix}${book.image}"
+                            onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
+                            onclick="goToBook(${book.id})"
+                            style="cursor:pointer;"
                         >
 
                         <h3>${book.title}</h3>
@@ -176,8 +177,12 @@ async function init() {
         const imagePrefix = isInPages ? '../' : '';
 
         container.innerHTML = results.map(book => `
-            <div onclick="goToBook(${book.id})" class="book-card-result">
-                <img src="${imagePrefix}${book.image}" style="cursor: pointer;">
+            <div onclick="goToBook(${book.id})" class="book-card-result"  style="cursor:pointer;">
+                <img
+                    src="${imagePrefix}${book.image}"
+                    onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
+                    style="cursor: pointer;"
+                >
                 <h3>${book.title}</h3>
             </div>
     `).join("");
