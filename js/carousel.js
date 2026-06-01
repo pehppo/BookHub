@@ -1,4 +1,3 @@
-console.log('Carousel script loaded.');
 
 async function loadBooks() {
 

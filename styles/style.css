@@ -112,8 +112,15 @@ body {
   margin: 0 40px;
   position: relative;
 }
-#searchResultsContainer {
+.light-mode #searchResultsContainer {
+  background: var(--color-background-1);
+}
+.dark-mode #searchResultsContainer {
   background: var(--dark-background-2);
+  border: 1px solid var(--dark-blue);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+#searchResultsContainer {
   position: absolute;
   top: 100%;
   left: 0;

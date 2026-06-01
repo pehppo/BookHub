@@ -26,7 +26,6 @@ async function renderAllBooks() {
     const sorted = [...booksArray].sort((a, b) =>
         a.title.localeCompare(b.title)
     );
-    console.log("Sorted books array:", sorted);
     container.innerHTML = sorted.map(book => `
         <div class="book-card">
            <img
@@ -74,11 +73,9 @@ async function filterByCategory(event, genre) {
         return;
     }
 
-    console.log(books)
 
     if (allBooksSection) allBooksSection.style.display = "none";
     const filtered = booksArray.filter(book => {
-        console.log("Checking book:", book.title, "with genres:", book.genre);
         return activeGenres.every(g => book.genre.includes(g))
     });
 

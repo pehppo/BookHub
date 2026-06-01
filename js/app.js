@@ -11,9 +11,10 @@ async function loadBooks() {
     return data;
 }
 async function init() {
-    console.log('App script loaded.');
     const data = await loadBooks();
     const books = data?.books;
+
+
     if (!books) {
         console.error("Nenhum livro encontrado.");
         return;
@@ -45,10 +46,6 @@ async function init() {
         }
     }
 
-    /* ===================== */
-    /* BANCO DE DADOS */
-    /* ===================== */
-
 
 
     /* ===================== */
@@ -67,7 +64,6 @@ async function init() {
 
         const container = document.getElementById(elementId);
         if (!container) return;
-
         const filtered = booksArray.filter(book => {
 
             if (type === "lancamentos") return book.category.includes("lancamentos");
@@ -136,7 +132,6 @@ async function init() {
 
             const searchSection = document.getElementById("searchResultsContainer");
             const searchResults = document.getElementById("searchResults");
-            console.log(value)
             // Se vazio → volta ao normal
             if (value === "") {
                 searchSection.style.display = "none";

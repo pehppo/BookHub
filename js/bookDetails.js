@@ -13,7 +13,6 @@ async function loadBooks() {
 
 const params = new URLSearchParams(window.location.search);
 const bookId = parseInt(params.get("id"));
-console.log("ID do livro na URL:", bookId);
 /* ===================== */
 /* DETALHES DO LIVRO */
 /* ===================== */
@@ -24,15 +23,12 @@ async function loadBookDetails() {
     const books = data?.books;
 
     // Carrega o livro correto
-    console.log("ID do livro na URL:", bookId);
     // Busca o livro pelo ID
     if (!bookId) {
         console.error("ID do livro não fornecido.");
         return;
     }
     const book = books[bookId];
-    console.log("ID do livro:", bookId);
-    console.log("Livro selecionado:", book);
     if (!book) return;
 
     currentBook = book;
@@ -40,7 +36,7 @@ async function loadBookDetails() {
     const imagePrefix = isInPages ? '../' : '';
     // Preenche os dados na tela
     const img = document.getElementById("book-img");
-    console.log("Carregando imagem do livro:", `${imagePrefix}${book.image}`);
+    ("Carregando imagem do livro:", `${imagePrefix}${book.image}`);
     img.src = `${imagePrefix}${book.image}`;
     img.onerror = () => {
         img.src = `${imagePrefix}assets/imgs/image-default.png`;
