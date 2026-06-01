@@ -133,9 +133,9 @@ async function init() {
 
             const value = searchInput.value.toLowerCase();
 
-            const searchSection = document.getElementById("searchSection");
+            const searchSection = document.getElementById("searchResultsContainer");
             const searchResults = document.getElementById("searchResults");
-
+            console.log(value)
             // Se vazio → volta ao normal
             if (value === "") {
                 searchSection.style.display = "none";
@@ -176,99 +176,12 @@ async function init() {
         const imagePrefix = isInPages ? '../' : '';
 
         container.innerHTML = results.map(book => `
-        <div class="book-card">
-            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
-            <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
-        </div>
+            <div onclick="goToBook(${book.id})" class="book-card-result">
+                <img src="${imagePrefix}${book.image}" style="cursor: pointer;">
+                <h3>${book.title}</h3>
+            </div>
     `).join("");
     }
-
-    /* ===================== */
-    /* RENDERIZAR TODOS OS LIVROS */
-    /* ===================== */
-
-    function renderAllBooks() {
-        const container = document.getElementById("allBooks");
-        if (!container) return;
-
-        const isInPages = window.location.pathname.includes('/pages/');
-        const imagePrefix = isInPages ? '../' : '';
-
-        const sorted = [...booksArray].sort((a, b) => a.title.localeCompare(b.title));
-
-        container.innerHTML = sorted.map(book => `
-        <div class="book-card">
-            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
-            <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
-        </div>
-    `).join("");
-    }
-
-    /* ===================== */
-    /* CATEGORIAS */
-    /* ===================== */
-
-    function filterByCategory(genre) {
-
-        const button = event.target;
-
-        // Toggle active class
-        button.classList.toggle('active');
-
-        if (button.classList.contains('active')) {
-            button.innerHTML = genre + ' ✕';
-        } else {
-            button.innerHTML = genre;
-        }
-
-        // Get all active genres
-        const activeButtons = document.querySelectorAll('.category-btn.active');
-        const activeGenres = Array.from(activeButtons).map(btn => btn.innerHTML.replace(' ✕', ''));
-
-        const container = document.getElementById("categoryResults");
-        const allBooksSection = document.getElementById("allBooks")?.parentElement;
-
-        if (!container) return;
-
-        if (activeGenres.length === 0) {
-            container.innerHTML = "";
-            if (allBooksSection) allBooksSection.style.display = "block";
-            return;
-        }
-
-        if (allBooksSection) allBooksSection.style.display = "none";
-
-        const filtered = booksArray.filter(book =>
-            activeGenres.every(g => book.genre.includes(g))
-        );
-
-        const isInPages = window.location.pathname.includes('/pages/');
-        const imagePrefix = isInPages ? '../' : '';
-
-        if (filtered.length === 0) {
-            container.innerHTML = `
-            <div class="no-results">
-                <h4>Ops!</h4>
-                <p>Nenhum livro encontrado nestas categorias.</p>
-            </div>`;
-            return;
-        }
-
-        container.innerHTML = filtered.map(book => `
-        <div class="book-card">
-            <img src="${imagePrefix}${book.image}" onclick="goToBook(${book.id})" style="cursor: pointer;">
-            <h3>${book.title}</h3>
-            <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
-        </div>
-    `).join("");
-    }
-    window.filterByCategory = filterByCategory;
 }
-
 init();
 
