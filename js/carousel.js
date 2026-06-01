@@ -1,17 +1,7 @@
 
-async function loadBooks() {
-
-    const response = await fetch('./assets/api/books.json');
-
-    const data = await response.json();
-
-    return data;
-
-}
-async function initCarousel() {
-    const data = await loadBooks();
-    const books = data?.books;
-    if (!books) {
+async function initCarousel(booksArray) {
+    console.log(booksArray);
+    if (!booksArray || !booksArray.length) {
         console.error("Nenhum livro encontrado.");
         return;
     }
@@ -109,5 +99,3 @@ async function initCarousel() {
         updateSlider();
     });
 }
-
-initCarousel();

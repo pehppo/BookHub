@@ -118,6 +118,7 @@ async function init() {
     renderBooks("lancamentos", "lancamentos");
     renderBooks("populares", "populares");
     renderBooks("recomendados", "recomendados");
+    initCarousel(booksArray);
 
     /* ===================== */
     /* BUSCA */
