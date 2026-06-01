@@ -110,8 +110,52 @@ body {
   flex: 1;
   max-width: 400px;
   margin: 0 40px;
+  position: relative;
 }
-
+#searchResultsContainer {
+  background: var(--dark-background-2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 20px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  max-height: 300px;
+  z-index: 99999;
+}
+#searchResultsContainer h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+#searchResultsContainer img {
+  width: 100%;
+  height: auto;
+  max-width: 40px;
+}
+#searchResultsContainer .books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+#searchResultsContainer .book-card-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  width: 100%;
+  border: 1px solid wheat;
+}
+#searchResultsContainer .book-card-result h3 {
+  font-size: 14px;
+  width: 100%;
+}
+#searchResultsContainer .book-card-result input {
+  background: var(--color-link-1);
+}
 .search-box input {
   width: 100%;
   padding: 10px 15px;
@@ -729,6 +773,11 @@ body {
     margin: 0 auto 0 0px;
   }
 }
+
+/* ===================== */
+/* MODAL DE RESULTADOS */
+/* ===================== */
+
 /* Responsividade para celular */
 @media (max-width: 900px) {
   .main-layout {
@@ -747,4 +796,25 @@ body {
   .footer-grid {
     grid-template-columns: 1fr;
   }
+}
+/* ESTILIZAÇÂO DE SCROLL BAR */
+/* Largura da barra */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Fundo da barra */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Parte que o usuário arrasta */
+::-webkit-scrollbar-thumb {
+  background: var(--color-button-2);
+  border-radius: 10px;
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue);
 }
