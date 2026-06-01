@@ -115,11 +115,32 @@ async function init() {
     /* INIT */
     /* ===================== */
 
-    renderBooks("lancamentos", "lancamentos");
-    renderBooks("populares", "populares");
-    renderBooks("recomendados", "recomendados");
-    initCarousel(booksArray);
+    // INDEX.HTML
+    if (
+        window.location.pathname.endsWith('index.html') ||
+        window.location.pathname === '/' ||
+        window.location.pathname.endsWith('/')
+    ) {
+        renderBooks("lancamentos", "lancamentos");
+        renderBooks("populares", "populares");
+        renderBooks("recomendados", "recomendados");
+        initCarousel(booksArray);
 
+    }
+
+    // BOOK.HTML
+    if (window.location.pathname.endsWith('/pages/book.html')) {
+        const params = new URLSearchParams(window.location.search);
+        const bookId = parseInt(params.get("id"));
+        console.log("ID do livro:", bookId);
+        loadBookDetails(bookId);
+    }
+    // CATEGORIAS
+    if (window.location.pathname.endsWith('/pages/categories.html')) {
+        renderAllBooks(booksArray);
+        loadBooksCategory(booksArray);
+        filterByCategory(booksArray);
+    }
     /* ===================== */
     /* BUSCA */
     /* ===================== */
@@ -136,6 +157,7 @@ async function init() {
             // Se vazio → volta ao normal
             if (value === "") {
                 searchSection.style.display = "none";
+                searchInput.style.borderRadius = "20px";
 
                 renderBooks("lancamentos", "lancamentos");
                 renderBooks("populares", "populares");
@@ -143,6 +165,7 @@ async function init() {
                 return;
             }
 
+            searchInput.style.borderRadius = "20px 20px 0 0";
             // Mostra seção de busca
             searchSection.style.display = "block";
 
@@ -150,6 +173,18 @@ async function init() {
                 book.title.toLowerCase().includes(value)
             );
 
+            // fechar pesquisa ao clicar fora
+            const searchBox = document.querySelector('.search-box');
+
+            document.addEventListener('click', (event) => {
+
+                if (!searchBox.contains(event.target)) {
+                    searchSection.style.display = 'none';
+                    searchInput.style.borderRadius = '20px';
+                    searchInput.value = '';
+                }
+
+            });
             renderSearchResults(results);
         });
     }

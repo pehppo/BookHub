@@ -116,8 +116,10 @@ body {
   background: var(--color-background-1);
 }
 .dark-mode #searchResultsContainer {
-  background: var(--dark-background-2);
+  background: var(--dark-background-1);
   border: 1px solid var(--dark-blue);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
 #searchResultsContainer {
@@ -144,7 +146,7 @@ body {
 #searchResultsContainer .books-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 10px;
 }
 #searchResultsContainer .book-card-result {
   display: flex;
@@ -161,9 +163,9 @@ body {
   font-size: 14px;
   width: 100%;
 }
-#searchResultsContainer .book-card-result input {
+/* #searchResultsContainer .book-card-result input {
   background: var(--color-link-1);
-}
+} */
 .search-box input {
   width: 100%;
   padding: 10px 15px;

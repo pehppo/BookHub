@@ -1,27 +1,12 @@
-async function loadBooks() {
 
-    const jsonPath = window.location.pathname.includes('/pages/')
-        ? '../assets/api/books.json'
-        : './assets/api/books.json';
-
-    const response = await fetch(jsonPath);
-
-    const data = await response.json();
-
-    return data;
-}
-
-const params = new URLSearchParams(window.location.search);
-const bookId = parseInt(params.get("id"));
 /* ===================== */
 /* DETALHES DO LIVRO */
 /* ===================== */
 
-async function loadBookDetails() {
+async function loadBookDetails(bookId) {
 
     const data = await loadBooks();
     const books = data?.books;
-
     // Carrega o livro correto
     // Busca o livro pelo ID
     if (!bookId) {
@@ -50,4 +35,3 @@ async function loadBookDetails() {
     document.getElementById("book-price").innerText = book.price;
     document.getElementById("book-description").innerText = book.description;
 }
-loadBookDetails();

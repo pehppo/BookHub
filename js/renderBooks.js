@@ -1,23 +1,8 @@
-async function loadBooks() {
-    const jsonPath = window.location.pathname.includes('/pages/')
-        ? '../assets/api/books.json'
-        : './assets/api/books.json';
 
-    const response = await fetch(jsonPath);
-
-    const data = await response.json();
-
-    return data.books;
-}
 /* ===================== */
 /* RENDERIZAR TODOS OS LIVROS */
 /* ===================== */
-async function renderAllBooks() {
-    const books = await loadBooks();
-    const booksArray = Object.entries(books).map(([id, book]) => ({
-        id: Number(id),
-        ...book
-    }));
+async function renderAllBooks(booksArray) {
 
     const container = document.getElementById("allBooks");
     if (!container) return;
@@ -47,7 +32,10 @@ async function renderAllBooks() {
 
 async function filterByCategory(event, genre) {
     const { books } = await loadBooks();
-    const booksArray = Object.values(books);
+    const booksArray = Object.entries(books).map(([id, book]) => ({
+        id: Number(id),
+        ...book
+    }));
     const button = event.target;
     // Toggle active class
     button.classList.toggle('active');
@@ -99,10 +87,9 @@ async function filterByCategory(event, genre) {
                 onclick="goToBook(${book.id})"
                 style="cursor:pointer;"
             >
+            <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
             <button onclick="goToBook(${book.id})">Ver livro</button>
         </div>
     `).join("");
 }
-window.filterByCategory = filterByCategory;
-renderAllBooks();
