@@ -20,6 +20,7 @@ async function loadBookDetails(bookId) {
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
     // Preenche os dados na tela
+    // Caso a imagem nao carregue, exibe a imagem padrão
     const img = document.getElementById("book-img");
     ("Carregando imagem do livro:", `${imagePrefix}${book.image}`);
     img.src = `${imagePrefix}${book.image}`;

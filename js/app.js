@@ -1,3 +1,7 @@
+
+
+// CARREGANDO LIVROS QUE ESTAO NO ARQUIVO JSON
+
 async function loadBooks() {
 
     const jsonPath = window.location.pathname.includes('/pages/')
@@ -10,6 +14,8 @@ async function loadBooks() {
 
     return data;
 }
+
+// INICIANDO APLICAÇÃO
 async function init() {
     const data = await loadBooks();
     const books = data?.books;
@@ -20,31 +26,7 @@ async function init() {
         return;
     }
 
-    /* ===================== */
-    /* NAVEGAÇÃO */
-    /* ===================== */
-    // Vai para página de detalhes com o ID na URL
-    function goToBook(id) {
-        const path = window.location.pathname.includes('/pages/') ? './book.html' : 'pages/book.html';
-        window.location.href = `${path}?id=${id}`;
 
-    }
-
-    // Guarda o livro atual (usado no botão comprar)
-    let currentBook = null;
-    window.goToBook = goToBook;
-
-    // Voltar
-    function goBack() {
-        window.history.back();
-    }
-
-    // Comprar
-    function buyBook() {
-        if (currentBook && currentBook.link) {
-            window.open(currentBook.link, "_blank");
-        }
-    }
 
 
 
@@ -56,60 +38,6 @@ async function init() {
         id: Number(id),
         ...book
     }));
-    /* ===================== */
-    /* RENDERIZAÇÃO */
-    /* ===================== */
-
-    function renderBooks(type, elementId) {
-
-        const container = document.getElementById(elementId);
-        if (!container) return;
-        const filtered = booksArray.filter(book => {
-
-            if (type === "lancamentos") return book.category.includes("lancamentos");
-            if (type === "populares") return book.category.includes("populares");
-            if (type === "recomendados") return book.category.includes("recomendados");
-
-            return false;
-        });
-
-        const isInPages = window.location.pathname.includes('/pages/');
-        const imagePrefix = isInPages ? '../' : '';
-
-        container.innerHTML = `
-    <div class="carousel">
-        <div class="container">
-            <div class="slides">
-                ${filtered.map(book => `
-                    <div class="book-card">
-                        <img 
-                            src="${imagePrefix}${book.image}"
-                            onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
-                            onclick="goToBook(${book.id})"
-                            style="cursor:pointer;"
-                        >
-
-                        <h3>${book.title}</h3>
-
-                        <p class="genre">${book.genre}</p>
-
-                        <button onclick="goToBook(${book.id})">
-                            Ver livro
-                        </button>
-                    </div>
-                `).join("")}
-            </div>
-        </div>
-        <button type="button" class="carousel-button prev">
-            &#10094;
-        </button>
-
-        <button type="button" class="carousel-button next">
-            &#10095;
-        </button>
-    </div>
-`;
-    }
 
     /* ===================== */
     /* INIT */
@@ -121,9 +49,9 @@ async function init() {
         window.location.pathname === '/' ||
         window.location.pathname.endsWith('/')
     ) {
-        renderBooks("lancamentos", "lancamentos");
-        renderBooks("populares", "populares");
-        renderBooks("recomendados", "recomendados");
+        renderBooks("lancamentos", "lancamentos", booksArray);
+        renderBooks("populares", "populares", booksArray);
+        renderBooks("recomendados", "recomendados", booksArray);
         initCarousel(booksArray);
 
     }
@@ -132,14 +60,14 @@ async function init() {
     if (window.location.pathname.endsWith('/pages/book.html')) {
         const params = new URLSearchParams(window.location.search);
         const bookId = parseInt(params.get("id"));
-        console.log("ID do livro:", bookId);
         loadBookDetails(bookId);
+
     }
     // CATEGORIAS
-    if (window.location.pathname.endsWith('/pages/categories.html')) {
+    if (window.location.pathname.endsWith('/pages/categories.html') && booksArray.length > 0) {
         renderAllBooks(booksArray);
-        loadBooksCategory(booksArray);
-        filterByCategory(booksArray);
+        // loadBooksCategory(booksArray);
+        // filterByCategory(booksArray);
     }
     /* ===================== */
     /* BUSCA */
@@ -158,10 +86,9 @@ async function init() {
             if (value === "") {
                 searchSection.style.display = "none";
                 searchInput.style.borderRadius = "20px";
-
-                renderBooks("lancamentos", "lancamentos");
-                renderBooks("populares", "populares");
-                renderBooks("recomendados", "recomendados");
+                // renderBooks("lancamentos", "lancamentos", booksArray);
+                // renderBooks("populares", "populares", booksArray);
+                // renderBooks("recomendados", "recomendados", booksArray);
                 return;
             }
 
@@ -218,6 +145,39 @@ async function init() {
             </div>
     `).join("");
     }
-}
-init();
 
+
+    return true
+}
+
+
+// Guarda o livro atual (usado no botão comprar)
+let currentBook = null;
+/* ===================== */
+/* NAVEGAÇÃO */
+/* ===================== */
+// Vai para página de detalhes com o ID na URL
+function goToBook(id) {
+    const path = window.location.pathname.includes('/pages/') ? './book.html' : 'pages/book.html';
+    window.location.href = `${path}?id=${id}`;
+
+}
+// Voltar
+function goBack() {
+    window.history.back();
+}
+
+// Comprar
+function buyBook() {
+    if (currentBook && currentBook.link) {
+        window.open(currentBook.link, "_blank");
+    }
+}
+
+
+
+// ESPERA O JS CARREGAR PARA INICIAR O INIT
+document.addEventListener('DOMContentLoaded', async () => {
+
+    await init();
+});
