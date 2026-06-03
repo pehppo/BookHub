@@ -84,9 +84,9 @@ async function renderAllBooks(booksArray) {
 /* ===================== */
 
 async function filterByCategory(event, genre) {
-    const { books } = await loadBooks();
+    const books = await loadBooks();
     const booksArray = Object.entries(books).map(([id, book]) => ({
-        id: Number(id),
+        id: Number(id) + 1,
         ...book
     }));
     const button = event.target;

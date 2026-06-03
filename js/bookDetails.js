@@ -6,7 +6,7 @@
 async function loadBookDetails(bookId) {
 
     const data = await loadBooks();
-    const books = data?.books;
+    const books = data;
     // Carrega o livro correto
     // Busca o livro pelo ID
     if (!bookId) {
