@@ -4,12 +4,11 @@
 
 async function loadBooks() {
 
-    const jsonPath = window.location.pathname.includes('/pages/')
-        ? '../assets/api/books.json'
-        : './assets/api/books.json';
+    // const jsonPath = window.location.pathname.includes('/pages/')
+    //     ? '../assets/api/books.json'
+    //     : './assets/api/books.json';
 
-    const response = await fetch(jsonPath);
-
+    const response = await fetch("http://localhost:3000/books");
     const data = await response.json();
 
     return data;
@@ -18,7 +17,7 @@ async function loadBooks() {
 // INICIANDO APLICAÇÃO
 async function init() {
     const data = await loadBooks();
-    const books = data?.books;
+    const books = data;
 
 
     if (!books) {
@@ -35,9 +34,10 @@ async function init() {
     /* ===================== */
 
     const booksArray = Object.entries(books).map(([id, book]) => ({
-        id: Number(id),
+        id: Number(id) + 1,
         ...book
     }));
+    console.log(booksArray);
 
     /* ===================== */
     /* INIT */
