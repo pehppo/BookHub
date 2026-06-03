@@ -4,10 +4,10 @@
 /* RENDERIZAÇÃO DE LIVROS DO INDEX */
 /* ===================== */
 
-function renderBooks(type, elementId, booksArray) {
+function renderBooks(type, elementId, books) {
     const container = document.getElementById(elementId);
-    if (!container && !booksArray.length) return;
-    const filtered = booksArray.filter(book => {
+    if (!container && !books.length) return;
+    const filtered = books.filter(book => {
 
         if (type === "lancamentos") return book.category.includes("lancamentos");
         if (type === "populares") return book.category.includes("populares");
@@ -28,15 +28,14 @@ function renderBooks(type, elementId, booksArray) {
                         <img 
                             src="${imagePrefix}${book.image}"
                             onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
-                            onclick="goToBook(${book.id})"
+                            onclick="goToBook('${book._id}')"
                             style="cursor:pointer;"
                         >
-
                         <h3>${book.title}</h3>
 
                         <p class="genre">${book.genre}</p>
 
-                        <button onclick="goToBook(${book.id})">
+                        <button onclick="goToBook('${book._id}')">
                             Ver livro
                         </button>
                     </div>
@@ -55,13 +54,13 @@ function renderBooks(type, elementId, booksArray) {
 }
 
 // RENDERIZAR TODOS OS LIVROS
-async function renderAllBooks(booksArray) {
+async function renderAllBooks(books) {
 
     const container = document.getElementById("allBooks");
     if (!container) return;
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
-    const sorted = [...booksArray].sort((a, b) =>
+    const sorted = [...books].sort((a, b) =>
         a.title.localeCompare(b.title)
     );
     container.innerHTML = sorted.map(book => `
@@ -69,12 +68,12 @@ async function renderAllBooks(booksArray) {
            <img
                 src="${imagePrefix}${book.image}"
                 onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
-                onclick="goToBook(${book.id})"
+                onclick="goToBook('${book._id}')"
                 style="cursor:pointer;"
             >
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
+            <button onclick="goToBook('${book._id}')">Ver livro</button>
         </div>
     `).join("");
 }
@@ -85,12 +84,8 @@ async function renderAllBooks(booksArray) {
 
 async function filterByCategory(event, genre) {
     const books = await loadBooks();
-    const booksArray = Object.entries(books).map(([id, book]) => ({
-        id: Number(id) + 1,
-        ...book
-    }));
     const button = event.target;
-    if (!button.classList.contains('category-btn') && booksArray.length > 0) {
+    if (!button.classList.contains('category-btn') && books.length > 0) {
         return;
     }
     // Toggle active class
@@ -119,7 +114,7 @@ async function filterByCategory(event, genre) {
 
 
     if (allBooksSection) allBooksSection.style.display = "none";
-    const filtered = booksArray.filter(book => {
+    const filtered = books.filter(book => {
         return activeGenres.every(g => book.genre.includes(g))
     });
 
@@ -140,12 +135,12 @@ async function filterByCategory(event, genre) {
            <img
                 src="${imagePrefix}${book.image}"
                 onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
-                onclick="goToBook(${book.id})"
+                onclick="goToBook('${book._id}')"
                 style="cursor:pointer;"
             >
             <h3>${book.title}</h3>
             <p class="genre">${book.genre}</p>
-            <button onclick="goToBook(${book.id})">Ver livro</button>
+            <button onclick="goToBook('${book._id}')">Ver livro</button>
         </div>
     `).join("");
 }

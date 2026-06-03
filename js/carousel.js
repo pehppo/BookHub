@@ -1,7 +1,7 @@
 
-async function initCarousel(booksArray) {
-    console.log(booksArray);
-    if (!booksArray || !booksArray.length) {
+async function initCarousel(books) {
+    console.log(books);
+    if (!books || !books.length) {
         console.error("Nenhum livro encontrado.");
         return;
     }

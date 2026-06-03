@@ -8,8 +8,9 @@ async function loadBooks() {
     //     ? '../assets/api/books.json'
     //     : './assets/api/books.json';
 
-    const response = await fetch("http://localhost:3000/books");
+    const response = await fetch("https://bookhub-api-tbar.onrender.com/books");
     const data = await response.json();
+
 
     return data;
 }
@@ -27,17 +28,12 @@ async function init() {
 
 
 
-
+    console.log(books[0]._id);
 
     /* ===================== */
     /* CONVERSÃO PARA ARRAY */
     /* ===================== */
 
-    const booksArray = Object.entries(books).map(([id, book]) => ({
-        id: Number(id) + 1,
-        ...book
-    }));
-    console.log(booksArray);
 
     /* ===================== */
     /* INIT */
@@ -49,25 +45,25 @@ async function init() {
         window.location.pathname === '/' ||
         window.location.pathname.endsWith('/')
     ) {
-        renderBooks("lancamentos", "lancamentos", booksArray);
-        renderBooks("populares", "populares", booksArray);
-        renderBooks("recomendados", "recomendados", booksArray);
-        initCarousel(booksArray);
+        renderBooks("lancamentos", "lancamentos", books);
+        renderBooks("populares", "populares", books);
+        renderBooks("recomendados", "recomendados", books);
+        initCarousel(books);
 
     }
 
     // BOOK.HTML
     if (window.location.pathname.endsWith('/pages/book.html')) {
         const params = new URLSearchParams(window.location.search);
-        const bookId = parseInt(params.get("id"));
+        const bookId = params.get("_id");
         loadBookDetails(bookId);
 
     }
     // CATEGORIAS
-    if (window.location.pathname.endsWith('/pages/categories.html') && booksArray.length > 0) {
-        renderAllBooks(booksArray);
-        // loadBooksCategory(booksArray);
-        // filterByCategory(booksArray);
+    if (window.location.pathname.endsWith('/pages/categories.html') && books.length > 0) {
+        renderAllBooks(books);
+        // loadBooksCategory(books);
+        // filterByCategory(books);
     }
     /* ===================== */
     /* BUSCA */
@@ -86,9 +82,9 @@ async function init() {
             if (value === "") {
                 searchSection.style.display = "none";
                 searchInput.style.borderRadius = "20px";
-                // renderBooks("lancamentos", "lancamentos", booksArray);
-                // renderBooks("populares", "populares", booksArray);
-                // renderBooks("recomendados", "recomendados", booksArray);
+                // renderBooks("lancamentos", "lancamentos", books);
+                // renderBooks("populares", "populares", books);
+                // renderBooks("recomendados", "recomendados", books);
                 return;
             }
 
@@ -96,7 +92,7 @@ async function init() {
             // Mostra seção de busca
             searchSection.style.display = "block";
 
-            const results = booksArray.filter(book =>
+            const results = books.filter(book =>
                 book.title.toLowerCase().includes(value)
             );
 
@@ -134,8 +130,9 @@ async function init() {
         const isInPages = window.location.pathname.includes('/pages/');
         const imagePrefix = isInPages ? '../' : '';
 
-        container.innerHTML = results.map(book => `
-            <div onclick="goToBook(${book.id})" class="book-card-result"  style="cursor:pointer;">
+        container.innerHTML = results.map(book => {
+            return `
+            <div onclick="goToBook('${book._id}')" class="book-card-result"  style="cursor:pointer;">
                 <img
                     src="${imagePrefix}${book.image}"
                     onerror="this.src='${imagePrefix}assets/imgs/image-default.png'"
@@ -143,7 +140,8 @@ async function init() {
                 >
                 <h3>${book.title}</h3>
             </div>
-    `).join("");
+    `}).join("");
+
     }
 
 
@@ -159,8 +157,7 @@ let currentBook = null;
 // Vai para página de detalhes com o ID na URL
 function goToBook(id) {
     const path = window.location.pathname.includes('/pages/') ? './book.html' : 'pages/book.html';
-    window.location.href = `${path}?id=${id}`;
-
+    window.location.href = `${path}?_id=${id.toString()}`;
 }
 // Voltar
 function goBack() {
