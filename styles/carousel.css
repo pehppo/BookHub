@@ -1,0 +1,60 @@
+.carousel {
+  position: relative;
+  width: fit-content;
+  max-width: 800px;
+  margin: auto;
+}
+
+.slides {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.4s ease;
+}
+
+.book-card {
+  min-width: 250px;
+  flex-shrink: 0;
+}
+
+.carousel .container {
+  overflow: hidden;
+  padding: 20px 0;
+  width: 100%;
+  margin: auto;
+}
+.carousel .carousel-button {
+  width: 100%;
+  max-width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  transform: translateY(-50%);
+}
+.carousel .carousel-button.prev {
+  left: 10px;
+  top: 50%;
+}
+.carousel .carousel-button.next {
+  right: 10px;
+  top: 50%;
+}
+
+@media screen and (max-width: 1100px) {
+  .carousel {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .carousel {
+    max-width: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel {
+    max-width: 100%;
+  }
+}
