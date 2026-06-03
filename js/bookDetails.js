@@ -1,8 +1,9 @@
 async function loadBookDetails(bookId) {
-    const response = await fetch(
-        `https://seu-app.onrender.com/books/${bookId}`
-    );
+    const API_URL = 'https://bookhub-api-tbar.onrender.com';
 
+    const response = await fetch(
+        `${API_URL}/books/${bookId}`
+    );
     const book = await response.json();
 
     console.log(book);
