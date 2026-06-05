@@ -1,34 +1,63 @@
 
-
+let loading = true;
 // CARREGANDO LIVROS QUE ESTAO NO ARQUIVO JSON
 
-async function loadBooks() {
-
+async function loadBooks(url, retries = 5, delay = 2000) {
+    try {
+        const response = await fetch(url || './assets/api/books.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        if (retries > 0) {
+            console.warn(`Erro ao carregar os livros. Tentando novamente em ${delay / 1000} segundos... (${retries} tentativas restantes)`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            return loadBooks(url, retries - 1, delay);
+        } else {
+            console.error("Erro ao carregar os livros:", error);
+        }
+    }
     // const jsonPath = window.location.pathname.includes('/pages/')
     //     ? '../assets/api/books.json'
     //     : './assets/api/books.json';
-
-    const response = await fetch("https://bookhub-api-tbar.onrender.com/books");
-    const data = await response.json();
-
-
-    return data;
 }
 
 // INICIANDO APLICAÇÃO
 async function init() {
-    const data = await loadBooks();
+    let data;
+
+    try {
+        loading = true;
+        console.log("Iniciando carregamento...");
+
+        data = await loadBooks("https://bookhub-api-tbar.onrender.com/books");
+
+        if (!data) {
+            console.error("Nenhum dado retornado da API");
+            return;
+        }
+
+        console.log("Livros carregados com sucesso:", data);
+
+    } catch (error) {
+        console.error("Erro no init:", error);
+        return;
+
+    } finally {
+        loading = false;
+        console.log("Finalizado");
+    }
+
     const books = data;
 
-
-    if (!books) {
-        console.error("Nenhum livro encontrado.");
+    if (!Array.isArray(books)) {
+        console.error("Formato inválido:", books);
         return;
     }
 
 
 
-    console.log(books[0]._id);
 
     /* ===================== */
     /* CONVERSÃO PARA ARRAY */
@@ -61,6 +90,7 @@ async function init() {
     }
     // CATEGORIAS
     if (window.location.pathname.endsWith('/pages/categories.html') && books.length > 0) {
+        renderCategories(books);
         renderAllBooks(books);
         // loadBooksCategory(books);
         // filterByCategory(books);
