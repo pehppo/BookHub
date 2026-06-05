@@ -6,7 +6,6 @@ async function loadBookDetails(bookId) {
     );
     const book = await response.json();
 
-    console.log(book);
 
     currentBook = book;
 

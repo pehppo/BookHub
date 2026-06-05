@@ -1,7 +1,6 @@
+async function initCarousel(booksData) {
 
-async function initCarousel(books) {
-    console.log(books);
-    if (!books || !books.length) {
+    if (!booksData || !booksData.length) {
         console.error("Nenhum livro encontrado.");
         return;
     }
@@ -14,25 +13,74 @@ async function initCarousel(books) {
         const btnLeft = carousel.querySelector('.prev');
         const btnRight = carousel.querySelector('.next');
         const books = carousel.querySelectorAll('.book-card');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
 
         if (!slider || !btnLeft || !btnRight || !books.length) return;
 
         let index = 0;
+        let lastVisible = [];
 
         function getVisibleItems() {
             const containerWidth = carousel.offsetWidth;
             const itemWidth = books[0].offsetWidth;
 
-            return Math.floor(containerWidth / itemWidth);
-
+            return Math.max(
+                1,
+                Math.floor(containerWidth / itemWidth)
+            );
         }
-        let lastVisible = [];
+
+        function createDots() {
+
+            if (!dotsContainer) return;
+
+            dotsContainer.innerHTML = '';
+
+            const totalDots =
+                books.length - getVisibleItems() + 1;
+
+            for (let i = 0; i < totalDots; i++) {
+
+                const dot = document.createElement('button');
+
+                dot.classList.add('dot');
+
+                if (i === index) {
+                    dot.classList.add('active');
+                }
+
+                dot.addEventListener('click', () => {
+                    index = i;
+                    updateSlider();
+                });
+
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+
+            if (!dotsContainer) return;
+
+            const dots =
+                dotsContainer.querySelectorAll('.dot');
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle(
+                    'active',
+                    i === index
+                );
+            });
+        }
 
         function updateVisibleBooks() {
 
             lastVisible.forEach(book => {
-                book.classList.remove('visible');
-                book.classList.remove('first', 'last');
+                book.classList.remove(
+                    'visible',
+                    'first',
+                    'last'
+                );
             });
 
             lastVisible = Array.from(books).slice(
@@ -42,19 +90,28 @@ async function initCarousel(books) {
 
             lastVisible.forEach(book => {
                 book.classList.add('visible');
-                book.classList.remove('first', 'last');
             });
-            lastVisible[0].classList.add('first');
-            lastVisible[lastVisible.length - 1].classList.add('last');
+
+            if (lastVisible.length) {
+                lastVisible[0].classList.add('first');
+                lastVisible[lastVisible.length - 1]
+                    .classList.add('last');
+            }
         }
+
         function updateSlider() {
 
-            const gap = parseInt(getComputedStyle(slider).gap) || 0;
-            const itemWidth = books[0].offsetWidth + gap;
+            const gap =
+                parseInt(getComputedStyle(slider).gap) || 0;
+
+            const itemWidth =
+                books[0].offsetWidth + gap;
 
             slider.style.transform =
                 `translateX(-${index * itemWidth}px)`;
+
             updateVisibleBooks();
+            updateDots();
         }
 
         function nextSlide() {
@@ -69,8 +126,6 @@ async function initCarousel(books) {
             }
 
             updateSlider();
-            updateVisibleBooks();
-
         }
 
         function prevSlide() {
@@ -90,12 +145,22 @@ async function initCarousel(books) {
         btnRight.addEventListener('click', nextSlide);
         btnLeft.addEventListener('click', prevSlide);
 
-        window.addEventListener('resize', updateSlider);
         window.addEventListener('resize', () => {
+
+            const maxIndex =
+                books.length - getVisibleItems();
+
+            if (index > maxIndex) {
+                index = Math.max(0, maxIndex);
+            }
+
+            createDots();
             updateSlider();
-            updateVisibleBooks();
         });
-        setInterval(nextSlide, 3000);
+
+        createDots();
         updateSlider();
+
+        setInterval(nextSlide, 3000);
     });
 }
