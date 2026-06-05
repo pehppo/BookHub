@@ -17,7 +17,6 @@ function renderCategories(books) {
     const categories = getCategories(books);
     const container = document.querySelector('.categories-grid');
 
-    console.log("Categorias encontradas:", categories);
     container.innerHTML = '';
 
     categories.forEach(category => {

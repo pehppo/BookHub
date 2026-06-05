@@ -8,14 +8,11 @@ function renderBooks(type, elementId, books) {
     const container = document.getElementById(elementId);
     if (!container && !books.length) return;
     const filtered = books.filter(book => {
-
         if (type === "lancamentos") return book.category.includes("lancamentos");
         if (type === "populares") return book.category.includes("populares");
         if (type === "recomendados") return book.category.includes("recomendados");
-
         return false;
     });
-
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
 
@@ -23,7 +20,7 @@ function renderBooks(type, elementId, books) {
     <div class="carousel">
         <div class="container">
             <div class="slides">
-                ${filtered.map(book => `
+                ${filtered.slice(0, 10).map(book => `
                     <div class="book-card">
                         <img 
                             src="${imagePrefix}${book.image}"
@@ -49,6 +46,7 @@ function renderBooks(type, elementId, books) {
         <button type="button" class="carousel-button next">
             &#10095;
         </button>
+        <div class="carousel-dots"></div>
     </div>
 `;
 }
@@ -99,14 +97,11 @@ async function filterByCategory(event, genre) {
 
     // Get all active genres
     const activeButtons = document.querySelectorAll('.category-btn.active');
-    console.log("Botões ativos:", activeButtons);
     const activeGenres = Array.from(activeButtons).map(btn => btn.innerHTML.replace(' ✕', ''));
 
     const container = document.getElementById("categoryResults");
-    console.log("Gêneros ativos:", activeGenres);
 
     const allBooksSection = document.getElementById("allBooks")?.parentElement;
-    console.log("Seção de todos os livros:", allBooksSection);
     if (!container) return;
 
     if (activeGenres.length === 0) {
@@ -124,7 +119,6 @@ async function filterByCategory(event, genre) {
 
         return activeGenres.every(g => genres.includes(g));
     });
-    console.log("Livros filtrados:", filtered);
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
 

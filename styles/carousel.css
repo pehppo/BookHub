@@ -58,3 +58,25 @@
     max-width: 100%;
   }
 }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
