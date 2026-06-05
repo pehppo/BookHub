@@ -83,7 +83,7 @@ async function renderAllBooks(books) {
 /* ===================== */
 
 async function filterByCategory(event, genre) {
-    const books = await loadBooks();
+    const books = await loadBooks("https://bookhub-api-tbar.onrender.com/books");
     const button = event.target;
     if (!button.classList.contains('category-btn') && books.length > 0) {
         return;
@@ -99,11 +99,14 @@ async function filterByCategory(event, genre) {
 
     // Get all active genres
     const activeButtons = document.querySelectorAll('.category-btn.active');
+    console.log("Botões ativos:", activeButtons);
     const activeGenres = Array.from(activeButtons).map(btn => btn.innerHTML.replace(' ✕', ''));
 
     const container = document.getElementById("categoryResults");
-    const allBooksSection = document.getElementById("allBooks")?.parentElement;
+    console.log("Gêneros ativos:", activeGenres);
 
+    const allBooksSection = document.getElementById("allBooks")?.parentElement;
+    console.log("Seção de todos os livros:", allBooksSection);
     if (!container) return;
 
     if (activeGenres.length === 0) {
@@ -115,9 +118,13 @@ async function filterByCategory(event, genre) {
 
     if (allBooksSection) allBooksSection.style.display = "none";
     const filtered = books.filter(book => {
-        return activeGenres.every(g => book.genre.includes(g))
-    });
+        const genres = book.genre
+            .flatMap(g => g.split(','))
+            .map(g => g.trim());
 
+        return activeGenres.every(g => genres.includes(g));
+    });
+    console.log("Livros filtrados:", filtered);
     const isInPages = window.location.pathname.includes('/pages/');
     const imagePrefix = isInPages ? '../' : '';
 
