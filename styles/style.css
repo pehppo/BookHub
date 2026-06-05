@@ -696,7 +696,21 @@ body {
     padding: 0;
   }
 }
+.loadingIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 9px solid;
+  border-color: #12b7ff;
+  border-right-color: #2b59c3;
+  animation: spinner-d3wgkg 0.8s infinite linear;
+}
 
+@keyframes spinner-d3wgkg {
+  to {
+    transform: rotate(1turn);
+  }
+}
 /* ===================== */
 /* RESPONSIVIDADE - MOBILE */
 /* ===================== */
