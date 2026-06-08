@@ -13,11 +13,14 @@ async function loadBookDetails(bookId) {
     const imagePrefix = isInPages ? '../' : '';
 
     const img = document.getElementById("book-img");
-    img.src = `${imagePrefix}${book.image}`;
+    img.src = book.image.startsWith("http")
+        ? book.image
+        : `${imagePrefix}${book.image}`;
 
     img.onerror = () => {
         img.src = `${imagePrefix}assets/imgs/image-default.png`;
     };
+    console.log(img)
 
     document.getElementById("book-title").innerText = book.title;
     document.getElementById("book-author").innerText = book.author;
