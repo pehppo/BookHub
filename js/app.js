@@ -4,7 +4,7 @@ let loading = true;
 
 async function loadBooks(url, retries = 5, delay = 2000) {
     try {
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        // await new Promise(resolve => setTimeout(resolve, 10000));
         const response = await fetch(url || './assets/api/books.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
