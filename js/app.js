@@ -39,7 +39,6 @@ async function init() {
             return;
         }
 
-        console.log("Livros carregados com sucesso:", data);
 
     } catch (error) {
         console.error("Erro no init:", error);
